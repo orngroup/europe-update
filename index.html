@@ -13,10 +13,16 @@ body{font-family:'Segoe UI',Calibri,Arial,sans-serif;color:var(--ink);font-size:
 .brand img{height:34px;}
 .brand .wm{font-size:24px;font-weight:800;letter-spacing:.08em;}
 .brand .tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.85;border-left:1px solid rgba(255,255,255,.4);padding-left:14px;}
-.nav{display:flex;gap:4px;}
-.nav button{background:none;border:none;color:rgba(255,255,255,.8);font-size:13px;font-weight:600;padding:8px 14px;border-radius:6px;cursor:pointer;font-family:inherit;}
+.nav{display:flex;gap:2px;flex-wrap:wrap;}
+.nav button{background:none;border:none;color:rgba(255,255,255,.8);font-size:13px;font-weight:600;padding:8px 13px;border-radius:6px;cursor:pointer;font-family:inherit;}
 .nav button:hover{background:rgba(255,255,255,.15);color:#fff;}
-@media(max-width:860px){.nav{display:none;}}
+.nav button.on{background:rgba(255,255,255,.2);color:#fff;}
+@media(max-width:920px){.nav{display:none;}}
+.mnav{display:none;}
+@media(max-width:920px){.mnav{display:block;background:var(--navy);padding:10px 5vw;}.mnav select{width:100%;padding:10px;font-size:15px;border-radius:6px;border:none;font-family:inherit;}}
+
+.page{display:none;}
+.page.on{display:block;}
 
 .hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
 .hero-img{position:absolute;inset:0;background:url('london.jpg') center/cover;opacity:.4;}
@@ -24,11 +30,11 @@ body{font-family:'Segoe UI',Calibri,Arial,sans-serif;color:var(--ink);font-size:
 .hero .eyebrow{color:#fff;opacity:.75;}
 .hero h1{font-size:44px;font-weight:300;line-height:1.1;margin:8px 0 14px;}
 .hero h1 b{font-weight:800;display:block;}
-.hero p{font-size:19px;opacity:.9;max-width:640px;}
+.hero p{font-size:19px;opacity:.9;max-width:660px;}
 .hero .addr{margin-top:22px;font-size:14px;opacity:.75;letter-spacing:.04em;}
 
 .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:700;}
-section{padding:64px 5vw;max-width:1200px;margin:0 auto;}
+section{padding:56px 5vw;max-width:1200px;margin:0 auto;}
 section.alt{background:var(--bg);max-width:none;}
 section.alt>.inner{max-width:1200px;margin:0 auto;}
 h2{font-size:32px;font-weight:300;color:var(--navy);margin:6px 0 4px;}
@@ -43,9 +49,7 @@ p{margin-bottom:14px;}
 .stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block;}
 
 .grid{display:grid;gap:16px;margin-top:12px;}
-.g2{grid-template-columns:1fr 1fr;}
-.g3{grid-template-columns:repeat(3,1fr);}
-.g4{grid-template-columns:repeat(4,1fr);}
+.g2{grid-template-columns:1fr 1fr;}.g3{grid-template-columns:repeat(3,1fr);}.g4{grid-template-columns:repeat(4,1fr);}
 @media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr;}}
 
 .func{background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:8px;padding:22px 24px;cursor:pointer;transition:box-shadow .15s;}
@@ -55,13 +59,15 @@ p{margin-bottom:14px;}
 .func-hd .chev{color:var(--red);font-size:20px;transition:transform .2s;}
 .func.open .chev{transform:rotate(45deg);}
 .func-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
-.func.open .func-body{max-height:600px;}
+.func.open .func-body{max-height:700px;}
 .func-body p{margin-top:14px;font-size:15px;color:var(--muted);}
 .func-body ul{margin:8px 0 0 18px;font-size:15px;color:var(--muted);}
 
 .mkt{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;border-top:3px solid var(--navy);}
 .mkt h3{font-size:17px;color:var(--navy);margin-bottom:4px;}
 .mkt p{font-size:14px;color:var(--muted);margin:0;}
+
+.structimg{width:100%;border:1px solid var(--line);border-radius:8px;margin:8px 0 4px;box-shadow:0 1px 8px rgba(0,0,0,.06);}
 
 .team{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;cursor:pointer;transition:box-shadow .15s;}
 .team:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
@@ -72,8 +78,8 @@ p{margin-bottom:14px;}
 .team .chev{margin-left:auto;color:var(--red);font-size:20px;transition:transform .2s;flex-shrink:0;}
 .team.open .chev{transform:rotate(45deg);}
 .team .short{font-size:14px;color:var(--muted);margin-top:12px;}
-.team-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.team.open .team-body{max-height:500px;}
+.team-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.team.open .team-body{max-height:560px;}
 .team-body p{font-size:14.5px;color:var(--muted);margin:12px 0 0;line-height:1.6;}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
 .tag{font-size:11px;font-weight:700;letter-spacing:.03em;background:var(--bg);color:var(--navy);border:1px solid var(--line);padding:4px 10px;border-radius:20px;}
@@ -89,8 +95,7 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 
 .supcat{margin-bottom:26px;}
 .supcat-hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--red);padding-bottom:7px;margin-bottom:10px;}
-.supcat-hd b{font-size:17px;color:var(--navy);}
-.supcat-hd span{font-size:13px;color:var(--red);font-weight:700;}
+.supcat-hd b{font-size:17px;color:var(--navy);}.supcat-hd span{font-size:13px;color:var(--red);font-weight:700;}
 .suplist{column-count:4;column-gap:24px;font-size:13.5px;}
 .suplist div{break-inside:avoid;padding:3px 0;color:#44506b;}
 .suplist div::before{content:'▪ ';color:var(--red);}
@@ -103,6 +108,10 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 .contact b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .contact span{font-size:16px;color:var(--red);font-weight:600;}
 .contact em{font-style:normal;font-size:13px;color:var(--muted);display:block;margin-top:3px;}
+.infocard{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px 24px;border-top:3px solid var(--red);}
+.infocard h3{font-size:16px;color:var(--navy);margin-bottom:10px;}
+.infocard p{font-size:14.5px;color:var(--muted);margin:2px 0;}
+.infocard a{color:var(--red);text-decoration:none;}
 
 .footer{background:var(--navy);color:#fff;padding:40px 5vw;text-align:center;font-size:14px;}
 .footer b{color:#fff;}.footer .red{color:var(--red);}
@@ -116,208 +125,264 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
     <img src="orn-logo.jpg" alt="ORN" onerror="this.style.display='none'">
     <span class="wm">orn</span><span class="tag">Europe</span>
   </div>
-  <div class="nav">
-    <button onclick="go('overview')">Overview</button>
-    <button onclick="go('markets')">Who we service</button>
-    <button onclick="go('functions')">What we do</button>
-    <button onclick="go('quality')">Quality &amp; support</button>
-    <button onclick="go('team')">The team</button>
-    <button onclick="go('suppliers')">Suppliers</button>
-    <button onclick="go('contact')">Contact</button>
+  <div class="nav" id="nav">
+    <button class="on" onclick="go('overview',this)">Overview</button>
+    <button onclick="go('markets',this)">Who we service</button>
+    <button onclick="go('structure',this)">Structure</button>
+    <button onclick="go('functions',this)">What we do</button>
+    <button onclick="go('cruise',this)">ORN Cruise</button>
+    <button onclick="go('quality',this)">Quality &amp; support</button>
+    <button onclick="go('team',this)">The team</button>
+    <button onclick="go('suppliers',this)">Suppliers</button>
+    <button onclick="go('contact',this)">Contact</button>
   </div>
 </div>
-
-<div class="hero" id="overview">
-  <div class="hero-img"></div>
-  <div class="hero-inner">
-    <div class="eyebrow">UK &amp; Europe operation · Business update</div>
-    <h1>The European<b>headquarters</b></h1>
-    <p>ORN Europe Limited is the group's UK and European operation — owning contracting, quality control, delivery and customer support from central London.</p>
-    <div class="addr">17 Hanover Square, Mayfair, London W1S 1BN</div>
-  </div>
+<div class="mnav">
+  <select onchange="go(this.value)">
+    <option value="overview">Overview</option><option value="markets">Who we service</option>
+    <option value="structure">Structure</option><option value="functions">What we do</option>
+    <option value="cruise">ORN Cruise</option><option value="quality">Quality &amp; support</option>
+    <option value="team">The team</option><option value="suppliers">Suppliers</option>
+    <option value="contact">Contact</option>
+  </select>
 </div>
 
-<section>
-  <div class="eyebrow">Introduction</div>
-  <h2>One accountable <b>European operation</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Owned by ORN Nexus PTE and running its own P&amp;L, the Europe office takes responsibility for the complete delivery chain — contracting the product, controlling the quality of every booking, delivering it in destination and supporting the guest while they travel.</p>
-  <div class="stats">
-    <div class="stat"><b>150+</b><span>Suppliers secured</span></div>
-    <div class="stat"><b>9</b><span>Service categories</span></div>
-    <div class="stat"><b>4</b><span>Source markets</span></div>
-    <div class="stat"><b>24h</b><span>Support coverage</span></div>
-  </div>
-  <div class="imgrow"><div style="background-image:url('paris.jpg')"></div><div style="background-image:url('italy.jpg')"></div><div style="background-image:url('austria.jpg')"></div></div>
-</section>
-
-<section class="alt" id="markets"><div class="inner">
-  <div class="eyebrow">Who we service</div>
-  <h2>Four markets, <b>one cost base</b></h2>
-  <div class="rule"></div>
-  <div class="grid g4">
-    <div class="mkt"><h3>TAG USA</h3><p>Groups, incentive and escorted programmes. One accountable European desk in the destination timezone.</p></div>
-    <div class="mkt"><h3>Australia</h3><p>FIT, groups and stopovers. Europe covers the overnight window when Australia is closed.</p></div>
-    <div class="mkt"><h3>India &amp; trade</h3><p>Inspiring Vacations and agent partners, using the same supplier base without duplication.</p></div>
-    <div class="mkt"><h3>UAE &amp; Saudi</h3><p>Growing Gulf outbound market buying premium European product.</p></div>
-  </div>
-</div></section>
-
-<section id="functions">
-  <div class="eyebrow">What we do</div>
-  <h2>Core <b>functions</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Click any function to expand.</p>
-  <div class="grid g2">
-    <div class="func" onclick="this.classList.toggle('open')">
-      <div class="func-hd"><h3>Quality control</h3><span class="chev">+</span></div>
-      <div class="func-body"><p>Every European booking is tracked, reconfirmed and confirmed on one operations platform. Every component is reconfirmed directly with the supplier against a structured 6-point check before the guest travels.</p>
-      <ul><li>Operator, contact, confirmation, time and pick-up location verified</li><li>Missing detail researched and completed before the gate</li><li>Failures caught days out, not at the hotel desk</li></ul></div>
-    </div>
-    <div class="func" onclick="this.classList.toggle('open')">
-      <div class="func-hd"><h3>Contracting</h3><span class="chev">+</span></div>
-      <div class="func-body"><p>150+ suppliers secured across nine service categories. Negotiated once in the UK, in the supplier timezone, and used by every ORN office.</p>
-      <ul><li>Direct supplier relationships and preferred rates</li><li>Allocations and group opportunities</li><li>Product loaded and distributed across the group</li></ul></div>
-    </div>
-    <div class="func" onclick="this.classList.toggle('open')">
-      <div class="func-hd"><h3>Cruise</h3><span class="chev">+</span></div>
-      <div class="func-body"><p>Full cruise operation — contracting, cruise-line relationships, charter negotiation, allocation and shore-side operations. Owned product with real margin, distributed to every office.</p>
-      <ul><li>Ocean, river and expedition lines</li><li>Group blocks and charter development</li><li>Shore excursions and port operations</li></ul></div>
-    </div>
-    <div class="func" onclick="this.classList.toggle('open')">
-      <div class="func-hd"><h3>Delivery &amp; support</h3><span class="chev">+</span></div>
-      <div class="func-body"><p>In-destination operations plus 24-hour customer support across USA, Australia and UAE, on the same telephone system customers use today with a dedicated European number.</p>
-      <ul><li>Real-time handling of changes and supplier failures</li><li>Follow-the-sun cover across timezones</li><li>Escalations directed to Ajay and Ken</li></ul></div>
+<div class="page on" id="overview">
+  <div class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-inner">
+      <div class="eyebrow">UK &amp; Europe operation · Business update</div>
+      <h1>The European<b>headquarters</b></h1>
+      <p>ORN Europe Limited is the group's UK and European operation — owning contracting, quality control, delivery and customer support from central London.</p>
+      <div class="addr">17 Hanover Square, Mayfair, London W1S 1BN</div>
     </div>
   </div>
-</section>
+  <section>
+    <div class="eyebrow">Introduction</div>
+    <h2>One accountable <b>European operation</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Owned by ORN Nexus PTE and running its own P&amp;L, the Europe office takes responsibility for the complete delivery chain — contracting the product, controlling the quality of every booking, delivering it in destination and supporting the guest while they travel.</p>
+    <div class="stats">
+      <div class="stat"><b>150+</b><span>Suppliers secured</span></div>
+      <div class="stat"><b>9</b><span>Service categories</span></div>
+      <div class="stat"><b>4</b><span>Source markets</span></div>
+      <div class="stat"><b>24h</b><span>Support coverage</span></div>
+    </div>
+    <div class="imgrow"><div style="background-image:url('paris.jpg')"></div><div style="background-image:url('italy.jpg')"></div><div style="background-image:url('austria.jpg')"></div></div>
+  </section>
+</div>
 
-<section class="alt" id="quality"><div class="inner">
-  <div class="eyebrow">Quality &amp; customer support</div>
-  <h2>Built-in <b>quality control</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Quality is built into the process, not checked at the end.</p>
-  <p>The operation runs on a fully built operations platform where every European booking is tracked, reconfirmed and confirmed in one place. Every component of every booking is reconfirmed directly with the supplier against a structured 6-point check — operator, contact, confirmation, time and pick-up location — before the guest travels, so nothing is left to chance.</p>
-  <h2 style="margin-top:36px">24-hour <b>customer support</b></h2>
-  <div class="rule"></div>
-  <p>Customers get support exactly as they do today with the Australia/Oceania operation — the identical support telephone system, with a dedicated European number. Customers call and speak to the team in the same way they currently do.</p>
-  <table>
-    <tr><th>Market</th><th>Coverage provided</th></tr>
-    <tr><td><b>USA (TAG)</b></td><td>European ground delivery, escalations and in-destination support</td></tr>
-    <tr><td><b>Australia</b></td><td>Overnight cover while Australia is closed — no gap in response</td></tr>
-    <tr><td><b>UAE / Middle East</b></td><td>European delivery for the growing Gulf outbound market</td></tr>
-  </table>
-  <div class="box"><b>Follow-the-sun:</b> as Australia closes, support transitions to Europe; as Europe closes it transitions onward across the network — no market left uncovered. The European support number will be shared as soon as it is live.</div>
-</div></section>
+<div class="page" id="markets">
+  <section>
+    <div class="eyebrow">Who we service</div>
+    <h2>Four markets, <b>one cost base</b></h2>
+    <div class="rule"></div>
+    <div class="grid g4">
+      <div class="mkt"><h3>TAG USA</h3><p>Groups, incentive and escorted programmes. One accountable European desk in the destination timezone. We also support TAG directly in their sales processes.</p></div>
+      <div class="mkt"><h3>Australia</h3><p>FIT, groups and stopovers. Europe covers the overnight window when Australia is closed.</p></div>
+      <div class="mkt"><h3>India &amp; trade</h3><p>Inspiring Vacations and agent partners, using the same supplier base without duplication.</p></div>
+      <div class="mkt"><h3>UAE &amp; Saudi</h3><p>Growing Gulf outbound market buying premium European product.</p></div>
+    </div>
+    <div class="box" style="margin-top:26px"><b>Supporting TAG in sales:</b> beyond delivery, the Europe team works alongside TAG in the sales process — building and completing quotes, sourcing product not yet in the system, and giving the sales team a European specialist behind every enquiry.</div>
+  </section>
+</div>
 
-<section id="team">
-  <div class="eyebrow">The team</div>
-  <h2>Experience <b>that runs deep</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Decades of combined experience across every aspect of the travel business — hands-on with the bookings daily. Click any team member to read more.</p>
-  <div class="grid g2">
+<div class="page" id="structure">
+  <section>
+    <div class="eyebrow">Structure</div>
+    <h2>How the operation <b>is structured</b></h2>
+    <div class="rule"></div>
+    <p class="lead">The European office sits between the group's source markets and the European supplier base, owning the relationship on both sides.</p>
+    <img class="structimg" src="structure.jpg" alt="ORN Europe operations structure">
+    <div class="box"><b>Group benefit:</b> four markets served from one cost base; the group owns European product rather than buying it at arm's length; faster payments at lower cost, with full transparency in Xero and monthly reporting to ORN Nexus PTE and Bangalore.</div>
+  </section>
+</div>
 
-    <div class="team" onclick="this.classList.toggle('open')">
-      <div class="team-hd"><div class="av">AK</div><div><h3>Ajay Kawa</h3><div class="role">CEO · Europe · Contracting</div></div><span class="chev">+</span></div>
-      <div class="short">30 years in travel at CEO and senior leadership level.</div>
-      <div class="team-body">
-        <p>Over 30 years in the travel industry at CEO and senior leadership level, spanning operations, contracting, commercial growth, product and distribution across the full breadth of the travel business. Ajay has built and scaled travel operations internationally and drives ORN Europe's contracting, supplier strategy and commercial direction.</p>
-        <div class="tags"><span class="tag">CEO leadership</span><span class="tag">Contracting</span><span class="tag">Commercial growth</span><span class="tag">Product &amp; distribution</span><span class="tag">Business scaling</span></div>
+<div class="page" id="functions">
+  <section>
+    <div class="eyebrow">What we do</div>
+    <h2>Core <b>functions</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Click any function to expand.</p>
+    <div class="grid g2">
+      <div class="func" onclick="this.classList.toggle('open')">
+        <div class="func-hd"><h3>Quality control</h3><span class="chev">+</span></div>
+        <div class="func-body"><p>Every European booking is tracked, reconfirmed and confirmed on one operations platform, against a structured 6-point check before the guest travels.</p>
+        <ul><li>Operator, contact, confirmation, time and pick-up location verified</li><li>Missing detail researched and completed before the gate</li><li>Failures caught days out, not at the hotel desk</li></ul></div>
+      </div>
+      <div class="func" onclick="this.classList.toggle('open')">
+        <div class="func-hd"><h3>Contracting &amp; key agreements</h3><span class="chev">+</span></div>
+        <div class="func-body"><p>150+ suppliers secured across nine categories. As part of the review we are actively renegotiating terms and establishing new key agreements across Europe to strengthen rates, allocation and commercial position.</p>
+        <ul><li>Renegotiating existing supplier terms for better rates and allocation</li><li>Establishing new key agreements with leading European suppliers</li><li>Negotiated once in the UK, used by every ORN office</li></ul></div>
+      </div>
+      <div class="func" onclick="this.classList.toggle('open')">
+        <div class="func-hd"><h3>Cruise</h3><span class="chev">+</span></div>
+        <div class="func-body"><p>A full cruise operation under ORN Cruise — contracting, cruise-line relationships, charter negotiation, allocation and shore-side operations, including focused destination cruises and Evergreen product.</p>
+        <ul><li>Ocean, river and expedition lines</li><li>Focused destination cruise programmes</li><li>Group blocks, charter and shore excursions</li></ul></div>
+      </div>
+      <div class="func" onclick="this.classList.toggle('open')">
+        <div class="func-hd"><h3>Delivery &amp; support</h3><span class="chev">+</span></div>
+        <div class="func-body"><p>In-destination operations plus 24-hour customer support across USA, Australia and UAE, on the same telephone system customers use today with a dedicated European number.</p>
+        <ul><li>Real-time handling of changes and supplier failures</li><li>Follow-the-sun cover across timezones</li><li>Sales-process support for TAG</li></ul></div>
       </div>
     </div>
+    <div class="box" style="margin-top:20px"><b>Under active review:</b> as we review the operation we are renegotiating supplier terms and establishing key new agreements across Europe — improving rates, securing allocation, and building direct product including focused destination cruises and Evergreen programmes.</div>
+  </section>
+</div>
 
-    <div class="team" onclick="this.classList.toggle('open')">
-      <div class="team-hd"><div class="av">KN</div><div><h3>Ken Newton</h3><div class="role">UK Operations &amp; Contracting</div></div><span class="chev">+</span></div>
-      <div class="short">Extensive experience in European operations and supplier contracting.</div>
-      <div class="team-body">
-        <p>Leads UK operations, reconfirmation, and hotel and supplier contracting. Ken brings extensive experience in European travel operations and supplier management — negotiating rates and allotments, managing supplier relationships across the continent, and running the day-to-day quality and reconfirmation process that sits at the heart of the operation.</p>
-        <div class="tags"><span class="tag">Hotel contracting</span><span class="tag">Supplier management</span><span class="tag">Reconfirmation</span><span class="tag">European operations</span><span class="tag">Quality control</span></div>
-      </div>
+<div class="page" id="cruise">
+  <section>
+    <div class="eyebrow">ORN Cruise</div>
+    <h2>Building <b>ORN Cruise</b></h2>
+    <div class="rule"></div>
+    <p class="lead">A dedicated cruise business, built on real cruise-industry expertise and direct line relationships.</p>
+    <p>ORN Cruise is being established as a solid, standalone cruise operation within the group — contracting, cruise-line relationships, charter negotiation and allocation, with a particular focus on <b>focused destination cruises</b> and <b>Evergreen</b> product. The ambition is to move from sourcing cruise as required to owning a genuine cruise business with real margin and direct supplier relationships.</p>
+    <p>The build is led by senior cruise-industry expertise — a major cruise advisor and head of business from one of the largest cruise companies now working with ORN to grow and establish ORN Cruise, alongside Manish's three decades in travel and cruising.</p>
+    <div class="grid g3" style="margin-top:8px">
+      <div class="mkt"><h3>Contracting &amp; allocation</h3><p>Direct line relationships, allotment blocks, group space and charter negotiation.</p></div>
+      <div class="mkt"><h3>Focused destination cruises</h3><p>Curated, destination-led cruise programmes built as owned product.</p></div>
+      <div class="mkt"><h3>Evergreen product</h3><p>Year-round, repeatable cruise programmes distributed across every ORN office.</p></div>
     </div>
+    <div class="imgrow"><div style="background-image:url('cruise1.jpg')"></div><div style="background-image:url('cruise2.jpg')"></div><div style="background-image:url('italy.jpg')"></div></div>
+  </section>
+</div>
 
-    <div class="team" onclick="this.classList.toggle('open')">
-      <div class="team-hd"><div class="av">TW</div><div><h3>Tim Windsor</h3><div class="role">UK Operations</div></div><span class="chev">+</span></div>
-      <div class="short">Strong operational background across Europe and Oceania.</div>
-      <div class="team-body">
-        <p>Works alongside Ken on UK operations and reconfirmation. Tim has a strong operational background across Europe and Oceania, with deep experience in booking operations and customer service — hands-on with bookings daily and focused on getting every component confirmed and right before the guest travels.</p>
-        <div class="tags"><span class="tag">Booking operations</span><span class="tag">Reconfirmation</span><span class="tag">Europe &amp; Oceania</span><span class="tag">Customer service</span></div>
+<div class="page" id="quality">
+  <section>
+    <div class="eyebrow">Quality &amp; customer support</div>
+    <h2>Built-in <b>quality control</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Quality is built into the process, not checked at the end.</p>
+    <p>The operation runs on a fully built operations platform where every European booking is tracked, reconfirmed and confirmed in one place. Every component of every booking is reconfirmed directly with the supplier against a structured 6-point check — operator, contact, confirmation, time and pick-up location — before the guest travels, so nothing is left to chance.</p>
+    <h2 style="margin-top:36px">24-hour <b>customer support</b></h2>
+    <div class="rule"></div>
+    <p>Customers get support exactly as they do today with the Australia/Oceania operation — the identical support telephone system, with a dedicated European number.</p>
+    <table>
+      <tr><th>Market</th><th>Coverage provided</th></tr>
+      <tr><td><b>USA (TAG)</b></td><td>European ground delivery, escalations and in-destination support</td></tr>
+      <tr><td><b>Australia</b></td><td>Overnight cover while Australia is closed — no gap in response</td></tr>
+      <tr><td><b>UAE / Middle East</b></td><td>European delivery for the growing Gulf outbound market</td></tr>
+    </table>
+    <div class="box"><b>Follow-the-sun:</b> as Australia closes, support transitions to Europe; as Europe closes it transitions onward across the network — no market left uncovered. The European support number will be shared as soon as it is live.</div>
+  </section>
+</div>
+
+<div class="page" id="team">
+  <section>
+    <div class="eyebrow">The team</div>
+    <h2>Experience <b>that runs deep</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Decades of combined experience across every aspect of the travel business — hands-on with the bookings daily. Click any team member to read more.</p>
+    <div class="grid g2">
+
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">AK</div><div><h3>Ajay Kawa</h3><div class="role">CEO · Europe · Contracting</div></div><span class="chev">+</span></div>
+        <div class="short">30 years in travel at CEO and senior leadership level.</div>
+        <div class="team-body"><p>Over 30 years in the travel industry at CEO and senior leadership level, spanning operations, contracting, commercial growth, product and distribution across the full breadth of the travel business. Ajay has built and scaled travel operations internationally and drives ORN Europe's contracting, supplier strategy and commercial direction.</p>
+        <div class="tags"><span class="tag">CEO leadership</span><span class="tag">Contracting</span><span class="tag">Commercial growth</span><span class="tag">Product &amp; distribution</span><span class="tag">Business scaling</span></div></div>
       </div>
-    </div>
 
-    <div class="team" onclick="this.classList.toggle('open')">
-      <div class="team-hd"><div class="av">SS</div><div><h3>Suman Sethi</h3><div class="role">Operations &amp; Service Delivery · Bangalore</div></div><span class="chev">+</span></div>
-      <div class="short">8+ years in DMC operations, ground handling and supplier relations.</div>
-      <div class="team-body">
-        <p>Based in Bangalore, Suman brings 8+ years in destination management and travel operations, managing supplier relations across multiple countries, guest escalations and logistics. Deeply experienced in the Nexus platform, booking operations and European delivery, he handles day-to-day system updates and service delivery — the operational backbone linking the UK desk with the group's systems.</p>
-        <div class="tags"><span class="tag">Nexus platform</span><span class="tag">DMC operations</span><span class="tag">Supplier relations</span><span class="tag">Booking operations</span><span class="tag">Escalation management</span></div>
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">KN</div><div><h3>Ken Newton</h3><div class="role">UK Operations &amp; Contracting</div></div><span class="chev">+</span></div>
+        <div class="short">Extensive experience in European operations and supplier contracting.</div>
+        <div class="team-body"><p>Leads UK operations, reconfirmation, and hotel and supplier contracting. Ken brings extensive experience in European travel operations and supplier management — negotiating rates and allotments, managing supplier relationships across the continent, and running the day-to-day quality and reconfirmation process at the heart of the operation.</p>
+        <div class="tags"><span class="tag">Hotel contracting</span><span class="tag">Supplier management</span><span class="tag">Reconfirmation</span><span class="tag">European operations</span><span class="tag">Quality control</span></div></div>
       </div>
-    </div>
 
-    <div class="team" onclick="this.classList.toggle('open')">
-      <div class="team-hd"><div class="av">MK</div><div><h3>Manish Kumar</h3><div class="role">Contracting &amp; Cruise</div></div><span class="chev">+</span></div>
-      <div class="short">30 years across travel and cruising.</div>
-      <div class="team-body">
-        <p>Handles contracting and commercial queries, with 30 years across the travel industry and deep specialist experience in cruising. Manish brings long-standing cruise-line relationships and contracting expertise — from allocation and group blocks to charter — alongside broad global DMC and commercial knowledge built over three decades.</p>
-        <div class="tags"><span class="tag">Cruise contracting</span><span class="tag">Cruise-line relationships</span><span class="tag">Charter &amp; allocation</span><span class="tag">Global DMC</span><span class="tag">30 years' experience</span></div>
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">TW</div><div><h3>Tim Windsor</h3><div class="role">UK Operations</div></div><span class="chev">+</span></div>
+        <div class="short">Strong operational background across Europe and Oceania.</div>
+        <div class="team-body"><p>Works alongside Ken on UK operations and reconfirmation. Tim has a strong operational background across Europe and Oceania, with deep experience in booking operations and customer service — hands-on with bookings daily and focused on getting every component confirmed and right before the guest travels.</p>
+        <div class="tags"><span class="tag">Booking operations</span><span class="tag">Reconfirmation</span><span class="tag">Europe &amp; Oceania</span><span class="tag">Customer service</span></div></div>
       </div>
+
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">SS</div><div><h3>Suman Sethi</h3><div class="role">Operations &amp; Service Delivery · Bangalore</div></div><span class="chev">+</span></div>
+        <div class="short">8+ years in DMC operations, ground handling and supplier relations.</div>
+        <div class="team-body"><p>Based in Bangalore, Suman brings 8+ years in destination management and travel operations, managing supplier relations across multiple countries, guest escalations and logistics. Deeply experienced in the Nexus platform, booking operations and European delivery, he handles day-to-day system updates and service delivery — the operational backbone linking the UK desk with the group's systems.</p>
+        <div class="tags"><span class="tag">Nexus platform</span><span class="tag">DMC operations</span><span class="tag">Supplier relations</span><span class="tag">Booking operations</span><span class="tag">Escalation management</span></div></div>
+      </div>
+
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">MK</div><div><h3>Manish Kumar</h3><div class="role">Contracting &amp; Cruise</div></div><span class="chev">+</span></div>
+        <div class="short">30 years across travel and cruising.</div>
+        <div class="team-body"><p>Handles contracting and commercial queries, with 30 years across the travel industry and deep specialist experience in cruising. Manish brings long-standing cruise-line relationships and contracting expertise — from allocation and group blocks to charter — alongside broad global DMC and commercial knowledge built over three decades.</p>
+        <div class="tags"><span class="tag">Cruise contracting</span><span class="tag">Cruise-line relationships</span><span class="tag">Charter &amp; allocation</span><span class="tag">Global DMC</span><span class="tag">30 years' experience</span></div></div>
+      </div>
+
+      <div class="team" onclick="this.classList.toggle('open')">
+        <div class="team-hd"><div class="av">M</div><div><h3>M*</h3><div class="role">Cruise Director · ORN Cruise</div></div><span class="chev">+</span></div>
+        <div class="short">Major cruise advisor and head of business from one of the largest cruise companies.</div>
+        <div class="team-body"><p>A senior cruise-industry leader — a major cruise advisor and head of business from one of the largest cruise companies — now working with ORN to grow and establish ORN Cruise as a solid, standalone cruise business. Brings direct cruise-line relationships, deep commercial cruise expertise and a track record of building cruise business at scale, leading contracting, allocation and the focused-destination and Evergreen cruise programmes.</p>
+        <div class="tags"><span class="tag">Cruise leadership</span><span class="tag">Line relationships</span><span class="tag">Charter &amp; allocation</span><span class="tag">Destination cruises</span><span class="tag">Business development</span></div></div>
+      </div>
+
     </div>
+  </section>
+</div>
 
-  </div>
-</section>
+<div class="page" id="suppliers">
+  <section>
+    <div class="eyebrow">Secured supplier access</div>
+    <h2>Over 150 suppliers, <b>every service type</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Secured access to a broad panel of leading travel suppliers — enabling us to quote and deliver product within SLA, globally. As part of the review we are renegotiating terms and establishing new key agreements across the panel.</p>
+    <table>
+      <tr><th>Service category</th><th class="num">No.</th><th>What it covers</th></tr>
+      <tr><td><b>Ocean &amp; river cruise</b></td><td class="num">24</td><td>Luxury, premium and expedition lines, plus European river specialists</td></tr>
+      <tr><td><b>Tour operators &amp; DMCs</b></td><td class="num">76</td><td>Worldwide and regional programmes, tailor-made and escorted</td></tr>
+      <tr><td><b>Hotels, villas &amp; beds</b></td><td class="num">16</td><td>Bed banks and villa collections at trade rates</td></tr>
+      <tr><td><b>Car hire &amp; transfers</b></td><td class="num">7</td><td>Car hire, private and shared transfers, taxis, lounges, marine charter</td></tr>
+      <tr><td><b>Flights &amp; air</b></td><td class="num">5</td><td>Air consolidators, seat-only and airline holiday divisions</td></tr>
+      <tr><td><b>Rail</b></td><td class="num">4</td><td>Rail operators and rail-holiday specialists</td></tr>
+      <tr><td><b>Ferries &amp; tunnel</b></td><td class="num">4</td><td>Ferry operators and the Channel Tunnel</td></tr>
+      <tr><td><b>Attractions &amp; extras</b></td><td class="num">9</td><td>Attractions, theme parks, activity resorts and experiences</td></tr>
+      <tr><td><b>Ski &amp; specialist</b></td><td class="num">5</td><td>Ski, snow and seasonal specialists</td></tr>
+      <tr><td><b>Total</b></td><td class="num">150</td><td>Suppliers secured across all service types</td></tr>
+    </table>
 
-<section class="alt" id="suppliers"><div class="inner">
-  <div class="eyebrow">Secured supplier access</div>
-  <h2>Over 150 suppliers, <b>every service type</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Secured access to a broad panel of leading travel suppliers — enabling us to quote and deliver product within SLA, globally.</p>
-  <table>
-    <tr><th>Service category</th><th class="num">No.</th><th>What it covers</th></tr>
-    <tr><td><b>Ocean &amp; river cruise</b></td><td class="num">24</td><td>Luxury, premium and expedition lines, plus European river specialists</td></tr>
-    <tr><td><b>Tour operators &amp; DMCs</b></td><td class="num">76</td><td>Worldwide and regional programmes, tailor-made and escorted</td></tr>
-    <tr><td><b>Hotels, villas &amp; beds</b></td><td class="num">16</td><td>Bed banks and villa collections at trade rates</td></tr>
-    <tr><td><b>Car hire &amp; transfers</b></td><td class="num">7</td><td>Car hire, private and shared transfers, taxis, lounges, marine charter</td></tr>
-    <tr><td><b>Flights &amp; air</b></td><td class="num">5</td><td>Air consolidators, seat-only and airline holiday divisions</td></tr>
-    <tr><td><b>Rail</b></td><td class="num">4</td><td>Rail operators and rail-holiday specialists</td></tr>
-    <tr><td><b>Ferries &amp; tunnel</b></td><td class="num">4</td><td>Ferry operators and the Channel Tunnel</td></tr>
-    <tr><td><b>Attractions &amp; extras</b></td><td class="num">9</td><td>Attractions, theme parks, activity resorts and experiences</td></tr>
-    <tr><td><b>Ski &amp; specialist</b></td><td class="num">5</td><td>Ski, snow and seasonal specialists</td></tr>
-    <tr><td><b>Total</b></td><td class="num">150</td><td>Suppliers secured across all service types</td></tr>
-  </table>
+    <div class="supcat"><div class="supcat-hd"><b>Ocean &amp; river cruise</b><span>24</span></div>
+      <div class="suplist"><div>Ama Waterways</div><div>Ambassador Cruise Holidays</div><div>Avalon Waterways (Globus)</div><div>Azamara Club Cruises</div><div>Celestyal Cruises</div><div>Cruising Power</div><div>Crystal Cruises</div><div>Disney Cruise Line</div><div>Emerald Cruises</div><div>Explora Journeys</div><div>Fred Olsen Cruise Lines</div><div>Holland America Line</div><div>Hurtigruten UK</div><div>MSC Cruises S.A</div><div>Norwegian Cruise Line</div><div>Oceania Cruises</div><div>Ponant Cruises</div><div>Regent Seven Seas Cruises</div><div>Riverside Luxury Cruises</div><div>Seabourn</div><div>Silversea Cruises</div><div>Star Clippers</div><div>Uniworld River Cruises</div><div>Windstar Cruises</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Tour operators &amp; DMCs</b><span>76</span></div>
+      <div class="suplist"><div>APT Group</div><div>Abercrombie &amp; Kent Travel</div><div>Africa Collection</div><div>African Pride</div><div>Alfa Travel</div><div>American Holidays</div><div>Anex Tour</div><div>Audley Travel Group</div><div>Beachcomber Tours</div><div>Canterbury Travel London</div><div>Carrier</div><div>Citalia (Travelopia)</div><div>Cox &amp; Kings</div><div>CroisiEurope</div><div>Cyplon Holidays</div><div>Dynamic</div><div>Enable Holidays</div><div>Exoticca</div><div>Explore Worldwide</div><div>Exsus</div><div>First Class Holidays</div><div>Fred. Holidays</div><div>G Adventures</div><div>Gold Medal Travel Group</div><div>Great Little Breaks</div><div>HX Expeditions</div><div>ITC Luxury Travel Group</div><div>If Only Holidays</div><div>Innstant Travel</div><div>Insider Journeys</div><div>Intrepid Travel Group UK</div><div>Involved Holidays</div><div>Ionian Island Holidays</div><div>JTA Holidays</div><div>Jetset Tours</div><div>Journey Latin America</div><div>Kirker Holidays</div><div>Kuoni Travel</div><div>Latin Routes</div><div>Leger Holidays / Shearings</div><div>Lime Management</div><div>Links Travel &amp; Tours</div><div>Lusso Travel</div><div>Mainstreet USA</div><div>Major Travel Plc</div><div>Mercury Holidays</div><div>Neilson Active Holidays</div><div>Newmarket Holidays</div><div>North American Travel Service</div><div>Omega Holidays</div><div>Orbital Travel</div><div>Osprey Holidays</div><div>Planet Holidays</div><div>Premier Holidays</div><div>Prestige Travel</div><div>Rainbow Tours</div><div>Red Sea Holidays UK</div><div>Riviera Travel</div><div>Solmar Travel</div><div>Sovereign Holidays (Travelopia)</div><div>Spectate Travel (ITC)</div><div>Sunset Travel</div><div>Sunspot Tours</div><div>Sunvil Holidays</div><div>TTC Agents</div><div>TUI UK</div><div>Tauck</div><div>Teldar Travel</div><div>Titan Travel</div><div>Transun</div><div>Travel Solutions</div><div>Travelpack</div><div>Travelsphere &amp; Just You</div><div>Typically Italian Holidays</div><div>Wendy Wu Tours</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Hotels, villas &amp; beds</b><span>16</span></div>
+      <div class="suplist"><div>Bedsonline</div><div>Bookabed</div><div>CV Villas</div><div>Destinations of the World — Webbeds</div><div>Elegant Resorts</div><div>Goodlife Florida Villas</div><div>Hoseasons</div><div>Interhome</div><div>Ocean Florida</div><div>RateHawk</div><div>SPL Villas</div><div>Simply Cuba</div><div>Stuba (Getabed)</div><div>Sunhotels Webbeds</div><div>The Villa Collection</div><div>Top Villas</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Car hire &amp; transfers</b><span>7</span></div>
+      <div class="suplist"><div>DriveAway</div><div>Flexible Autos</div><div>Holiday Taxis</div><div>Hoppa</div><div>Lifts To Ltd</div><div>Lounge Pass</div><div>Sunsail</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Flights &amp; air</b><span>5</span></div>
+      <div class="suplist"><div>Aviate</div><div>Canadian Affair</div><div>Easyjet Holidays</div><div>Etihad Holidays</div><div>Virgin Flight Store</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Rail</b><span>4</span></div>
+      <div class="suplist"><div>Eurostar International</div><div>Great Rail Journeys</div><div>Northern Belle</div><div>Railbookers</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Ferries &amp; tunnel</b><span>4</span></div>
+      <div class="suplist"><div>Brittany Ferries</div><div>Direct Ferries</div><div>Euro Tunnel</div><div>Irish Ferries</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Attractions &amp; extras</b><span>9</span></div>
+      <div class="suplist"><div>Attraction World</div><div>Club Med</div><div>Disneyland Resort Paris</div><div>DoSomethingDifferent.com</div><div>Mark Warner</div><div>Not In The Guidebooks</div><div>Sandals Holidays</div><div>Walt Disney Travel Company</div><div>Worldchoice Sports</div></div></div>
+    <div class="supcat"><div class="supcat-hd"><b>Ski &amp; specialist</b><span>5</span></div>
+      <div class="suplist"><div>Crystal Ski Holidays (TUI)</div><div>Santa's Lapland</div><div>Ski Gems</div><div>Ski Independence</div><div>Ski World</div></div></div>
+  </section>
+</div>
 
-  <div class="supcat"><div class="supcat-hd"><b>Ocean &amp; river cruise</b><span>24</span></div>
-    <div class="suplist"><div>Ama Waterways</div><div>Ambassador Cruise Holidays</div><div>Avalon Waterways (Globus)</div><div>Azamara Club Cruises</div><div>Celestyal Cruises</div><div>Cruising Power</div><div>Crystal Cruises</div><div>Disney Cruise Line</div><div>Emerald Cruises</div><div>Explora Journeys</div><div>Fred Olsen Cruise Lines</div><div>Holland America Line</div><div>Hurtigruten UK</div><div>MSC Cruises S.A</div><div>Norwegian Cruise Line</div><div>Oceania Cruises</div><div>Ponant Cruises</div><div>Regent Seven Seas Cruises</div><div>Riverside Luxury Cruises</div><div>Seabourn</div><div>Silversea Cruises</div><div>Star Clippers</div><div>Uniworld River Cruises</div><div>Windstar Cruises</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Tour operators &amp; DMCs</b><span>76</span></div>
-    <div class="suplist"><div>APT Group</div><div>Abercrombie &amp; Kent Travel</div><div>Africa Collection</div><div>African Pride</div><div>Alfa Travel</div><div>American Holidays</div><div>Anex Tour</div><div>Audley Travel Group</div><div>Beachcomber Tours</div><div>Canterbury Travel London</div><div>Carrier</div><div>Citalia (Travelopia)</div><div>Cox &amp; Kings</div><div>CroisiEurope</div><div>Cyplon Holidays</div><div>Dynamic</div><div>Enable Holidays</div><div>Exoticca</div><div>Explore Worldwide</div><div>Exsus</div><div>First Class Holidays</div><div>Fred. Holidays</div><div>G Adventures</div><div>Gold Medal Travel Group</div><div>Great Little Breaks</div><div>HX Expeditions</div><div>ITC Luxury Travel Group</div><div>If Only Holidays</div><div>Innstant Travel</div><div>Insider Journeys</div><div>Intrepid Travel Group UK</div><div>Involved Holidays</div><div>Ionian Island Holidays</div><div>JTA Holidays</div><div>Jetset Tours</div><div>Journey Latin America</div><div>Kirker Holidays</div><div>Kuoni Travel</div><div>Latin Routes</div><div>Leger Holidays / Shearings</div><div>Lime Management</div><div>Links Travel &amp; Tours</div><div>Lusso Travel</div><div>Mainstreet USA</div><div>Major Travel Plc</div><div>Mercury Holidays</div><div>Neilson Active Holidays</div><div>Newmarket Holidays</div><div>North American Travel Service</div><div>Omega Holidays</div><div>Orbital Travel</div><div>Osprey Holidays</div><div>Planet Holidays</div><div>Premier Holidays</div><div>Prestige Travel</div><div>Rainbow Tours</div><div>Red Sea Holidays UK</div><div>Riviera Travel</div><div>Solmar Travel</div><div>Sovereign Holidays (Travelopia)</div><div>Spectate Travel (ITC)</div><div>Sunset Travel</div><div>Sunspot Tours</div><div>Sunvil Holidays</div><div>TTC Agents</div><div>TUI UK</div><div>Tauck</div><div>Teldar Travel</div><div>Titan Travel</div><div>Transun</div><div>Travel Solutions</div><div>Travelpack</div><div>Travelsphere &amp; Just You</div><div>Typically Italian Holidays</div><div>Wendy Wu Tours</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Hotels, villas &amp; beds</b><span>16</span></div>
-    <div class="suplist"><div>Bedsonline</div><div>Bookabed</div><div>CV Villas</div><div>Destinations of the World — Webbeds</div><div>Elegant Resorts</div><div>Goodlife Florida Villas</div><div>Hoseasons</div><div>Interhome</div><div>Ocean Florida</div><div>RateHawk</div><div>SPL Villas</div><div>Simply Cuba</div><div>Stuba (Getabed)</div><div>Sunhotels Webbeds</div><div>The Villa Collection</div><div>Top Villas</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Car hire &amp; transfers</b><span>7</span></div>
-    <div class="suplist"><div>DriveAway</div><div>Flexible Autos</div><div>Holiday Taxis</div><div>Hoppa</div><div>Lifts To Ltd</div><div>Lounge Pass</div><div>Sunsail</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Flights &amp; air</b><span>5</span></div>
-    <div class="suplist"><div>Aviate</div><div>Canadian Affair</div><div>Easyjet Holidays</div><div>Etihad Holidays</div><div>Virgin Flight Store</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Rail</b><span>4</span></div>
-    <div class="suplist"><div>Eurostar International</div><div>Great Rail Journeys</div><div>Northern Belle</div><div>Railbookers</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Ferries &amp; tunnel</b><span>4</span></div>
-    <div class="suplist"><div>Brittany Ferries</div><div>Direct Ferries</div><div>Euro Tunnel</div><div>Irish Ferries</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Attractions &amp; extras</b><span>9</span></div>
-    <div class="suplist"><div>Attraction World</div><div>Club Med</div><div>Disneyland Resort Paris</div><div>DoSomethingDifferent.com</div><div>Mark Warner</div><div>Not In The Guidebooks</div><div>Sandals Holidays</div><div>Walt Disney Travel Company</div><div>Worldchoice Sports</div></div></div>
-  <div class="supcat"><div class="supcat-hd"><b>Ski &amp; specialist</b><span>5</span></div>
-    <div class="suplist"><div>Crystal Ski Holidays (TUI)</div><div>Santa's Lapland</div><div>Ski Gems</div><div>Ski Independence</div><div>Ski World</div></div></div>
-  <div class="imgrow"><div style="background-image:url('cruise1.jpg')"></div><div style="background-image:url('cruise2.jpg')"></div><div style="background-image:url('austria.jpg')"></div></div>
-</div></section>
-
-<section id="contact">
-  <div class="eyebrow">Contact</div>
-  <h2>How to <b>reach us</b></h2>
-  <div class="rule"></div>
-  <p class="lead">Please use the relevant address below from Monday 10th August 2026 — each inbox is monitored, so there's no need for long cc lists.</p>
-  <div class="contact">
-    <a href="mailto:quoteseu@orn.com"><b>Quotes &amp; bookings</b><span>quoteseu@orn.com</span><em>Quotes where product isn't yet in the system</em></a>
-    <a href="mailto:supporteu@orn.com"><b>Booking admin</b><span>supporteu@orn.com</span><em>Booking admin and queries</em></a>
-    <a href="mailto:customereu@orn.com"><b>Customer contact</b><span>customereu@orn.com</span><em>Customer contact</em></a>
-    <a href="mailto:escalationseu@orn.com"><b>Escalations</b><span>escalationseu@orn.com</span><em>Directed to Ajay and Ken</em></a>
-  </div>
-  <div class="box" style="margin-top:24px"><b>For quotes, please include:</b> travel dates · number of passengers (and child ages) · destination(s) and specific service(s) required · any relevant booking reference. The more detail, the faster we turn it around — same day, or within 24 hours at the latest.</div>
-</section>
+<div class="page" id="contact">
+  <section>
+    <div class="eyebrow">Contact</div>
+    <h2>How to <b>reach us</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Please use the relevant address below from Monday 10th August 2026 — each inbox is monitored, so there's no need for long cc lists.</p>
+    <div class="contact">
+      <a href="mailto:quoteseu@orn.com"><b>Quotes &amp; bookings</b><span>quoteseu@orn.com</span><em>Quotes where product isn't yet in the system</em></a>
+      <a href="mailto:supporteu@orn.com"><b>Booking admin</b><span>supporteu@orn.com</span><em>Booking admin and queries</em></a>
+      <a href="mailto:customereu@orn.com"><b>Customer contact</b><span>customereu@orn.com</span><em>Customer contact</em></a>
+      <a href="mailto:escalationseu@orn.com"><b>Escalations</b><span>escalationseu@orn.com</span><em>Directed to Ajay and Ken</em></a>
+    </div>
+    <div class="grid g2" style="margin-top:24px">
+      <div class="infocard"><h3>UK head office</h3>
+        <p>ORN Europe Limited</p><p>17 Hanover Square</p><p>Mayfair, London W1S 1BN</p><p>United Kingdom</p></div>
+      <div class="infocard"><h3>Telephone &amp; hours</h3>
+        <p>European support line: <b>going live — shared shortly</b></p><p>24-hour support across USA, Australia and UAE</p><p>Same telephone system as the Australia/Oceania operation</p></div>
+    </div>
+    <div class="box" style="margin-top:20px"><b>For quotes, please include:</b> travel dates · number of passengers (and child ages) · destination(s) and specific service(s) required · any relevant booking reference. The more detail, the faster we turn it around — same day, or within 24 hours at the latest.</div>
+  </section>
+</div>
 
 <div class="footer">
   <b>ORN<span class="red">.</span> Europe</b> · ORN Europe Limited · 17 Hanover Square, Mayfair, London W1S 1BN<br>
@@ -325,6 +390,13 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 </div>
 
 <script>
-function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function go(id, el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('on'));
+  if(el) el.classList.add('on');
+  else { var i=['overview','markets','structure','functions','cruise','quality','team','suppliers','contact'].indexOf(id); if(i>-1) document.querySelectorAll('#nav button')[i].classList.add('on'); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 </script>
 </body></html>
