@@ -3,155 +3,163 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORN Europe Limited — Business Update</title>
 <style>
-@page { size: A4; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Calibri, Arial, sans-serif; color: #1d2433; font-size: 10pt; line-height: 1.55; background: #52565c; }
-.page { width: 210mm; min-height: 297mm; padding: 18mm 16mm; position: relative; background: #fff; margin: 8mm auto; box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+:root { --red:#DC051E; --navy:#0f1b2d; --ink:#1d2433; --muted:#5f6880; --line:#e6e9ef; --bg:#f5f6f8; }
+body { font-family:'Segoe UI',Calibri,Arial,sans-serif; color:var(--ink); font-size:15px; line-height:1.6; background:#eceef1; }
 
-.printbtn { position: fixed; top: 20px; right: 20px; z-index: 999; background: #DC051E; color: #fff; border: none; padding: 12px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 3px 12px rgba(0,0,0,.25); font-family: inherit; }
-.printbtn:hover { background: #b00418; }
+.topbar { background:var(--red); color:#fff; padding:0 24px; height:60px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { height:30px; }
+.brand .wm { font-size:22px; font-weight:800; letter-spacing:.08em; }
+.brand .tag { font-size:11px; letter-spacing:.28em; text-transform:uppercase; opacity:.8; border-left:1px solid rgba(255,255,255,.4); padding-left:12px; }
+.printbtn { background:#fff; color:var(--red); border:none; padding:9px 18px; border-radius:6px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; }
 
-.cover { padding: 0 !important; display: flex; flex-direction: column; background: #0f1b2d; color: #fff; }
-.cover-img { height: 118mm; background: #16283f url('london.jpg') center/cover; position: relative; }
-.cover-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,27,45,.25), rgba(15,27,45,.95)); }
-.cover-body { flex: 1; padding: 14mm 16mm; position: relative; }
-.wordmark { font-size: 30pt; font-weight: 700; letter-spacing: .12em; }
-.wordmark span { color: #DC051E; }
-.cover-desc { font-size: 9pt; letter-spacing: .32em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: 4pt; }
-.cover-rule { width: 60mm; height: 3pt; background: #DC051E; margin: 10mm 0 8mm; }
-.cover h1 { font-size: 26pt; font-weight: 300; line-height: 1.2; }
-.cover h1 b { font-weight: 700; display: block; }
-.cover-sub { font-size: 11pt; color: rgba(255,255,255,.8); margin-top: 6mm; }
-.cover-meta { position: absolute; bottom: 14mm; left: 16mm; right: 16mm; display: flex; justify-content: space-between; font-size: 8.5pt; color: rgba(255,255,255,.6); border-top: .5pt solid rgba(255,255,255,.2); padding-top: 4mm; }
+.tabs { background:var(--navy); display:flex; gap:2px; padding:0 24px; position:sticky; top:60px; z-index:99; overflow-x:auto; }
+.tab { background:none; border:none; color:rgba(255,255,255,.65); padding:13px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap; border-bottom:3px solid transparent; }
+.tab:hover { color:#fff; }
+.tab.on { color:#fff; border-bottom-color:var(--red); }
 
-h2 { font-size: 17pt; font-weight: 300; color: #0f1b2d; margin-bottom: 2mm; }
-h2 b { font-weight: 700; color: #DC051E; }
-.eyebrow { font-size: 7.5pt; letter-spacing: .24em; text-transform: uppercase; color: #DC051E; font-weight: 700; margin-bottom: 2mm; }
-.rule { height: 2pt; background: #DC051E; width: 22mm; margin: 3mm 0 6mm; }
-h3 { font-size: 11pt; color: #0f1b2d; margin: 6mm 0 2mm; font-weight: 700; }
-p { margin-bottom: 3mm; }
-ul { margin: 0 0 3mm 5mm; }
-li { margin-bottom: 1.5mm; }
-.lead { font-size: 11.5pt; color: #44506b; line-height: 1.6; margin-bottom: 6mm; }
+.container { max-width:900px; margin:24px auto; padding:0 24px; }
+.section { display:none; background:#fff; padding:40px; border-radius:8px; box-shadow:0 1px 8px rgba(0,0,0,.08); margin-bottom:24px; }
+.section.on { display:block; }
 
-.stats { display: flex; gap: 4mm; margin: 6mm 0; }
-.stat { flex: 1; background: #f5f6f8; border-top: 3pt solid #DC051E; padding: 5mm 4mm; text-align: center; }
-.stat b { display: block; font-size: 22pt; color: #DC051E; line-height: 1; }
-.stat span { font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: #5f6880; }
+.hero { padding:0; overflow:hidden; }
+.hero-img { height:280px; background:var(--navy) center/cover; position:relative; }
+.hero-img::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(15,27,45,.2),rgba(15,27,45,.9)); }
+.hero-body { padding:32px 40px 40px; background:var(--navy); color:#fff; }
+.hero h1 { font-size:30px; font-weight:300; line-height:1.15; margin-bottom:6px; }
+.hero h1 b { font-weight:800; display:block; }
+.hero .sub { opacity:.8; font-size:15px; }
 
-table { width: 100%; border-collapse: collapse; margin: 4mm 0; font-size: 9pt; }
-th { background: #0f1b2d; color: #fff; text-align: left; padding: 2.5mm 3mm; font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
-td { padding: 2.5mm 3mm; border-bottom: .5pt solid #e6e9ef; vertical-align: top; }
-tr:nth-child(even) td { background: #fafbfc; }
-td.num { color: #DC051E; font-weight: 700; text-align: center; width: 18mm; }
+.eyebrow { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:8px; }
+h2 { font-size:26px; font-weight:300; color:var(--navy); margin-bottom:6px; }
+h2 b { font-weight:800; color:var(--red); }
+.rule { height:3px; background:var(--red); width:56px; margin:10px 0 22px; }
+h3 { font-size:16px; color:var(--navy); margin:22px 0 8px; }
+p { margin-bottom:12px; }
+ul { margin:0 0 12px 20px; } li { margin-bottom:5px; }
+.lead { font-size:17px; color:#44506b; margin-bottom:20px; }
 
-.box { background: #f5f6f8; border-left: 3pt solid #DC051E; padding: 4mm 5mm; margin: 4mm 0; font-size: 9.5pt; }
-.box b { color: #DC051E; }
-.two { display: flex; gap: 6mm; }
-.two > div { flex: 1; }
+.stats { display:flex; gap:14px; margin:22px 0; flex-wrap:wrap; }
+.stat { flex:1; min-width:120px; background:var(--bg); border-top:3px solid var(--red); padding:18px; text-align:center; }
+.stat b { display:block; font-size:32px; color:var(--red); line-height:1; }
+.stat span { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
 
-.structimg { width: 100%; border: .5pt solid #e6e9ef; border-radius: 3pt; margin: 4mm 0; }
+table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13.5px; }
+th { background:var(--navy); color:#fff; text-align:left; padding:9px 12px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+td { padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfc; }
+td.num { color:var(--red); font-weight:700; text-align:center; width:60px; }
 
-.supcat { margin-bottom: 6mm; page-break-inside: avoid; }
-.supcat-hd { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.5pt solid #DC051E; padding-bottom: 1.5mm; margin-bottom: 2mm; }
-.supcat-hd b { font-size: 11pt; color: #0f1b2d; }
-.supcat-hd span { font-size: 8pt; color: #DC051E; font-weight: 700; }
-.supcat p { font-size: 8.5pt; color: #5f6880; margin-bottom: 2mm; }
-.suplist { column-count: 3; column-gap: 5mm; font-size: 8pt; }
-.suplist div { break-inside: avoid; padding: .6mm 0; color: #44506b; }
-.suplist div::before { content: '▪ '; color: #DC051E; }
+.box { background:var(--bg); border-left:3px solid var(--red); padding:16px 20px; margin:16px 0; font-size:14px; }
+.box b { color:var(--red); }
+.two { display:flex; gap:24px; flex-wrap:wrap; } .two>div { flex:1; min-width:240px; }
+.structimg { width:100%; border:1px solid var(--line); border-radius:4px; margin:16px 0; }
+.imgrow { display:flex; gap:10px; margin:20px 0; } .imgrow div { flex:1; height:150px; background-size:cover; background-position:center; border-radius:4px; }
 
-.imgrow { display: flex; gap: 3mm; margin: 5mm 0; }
-.imgrow div { flex: 1; height: 34mm; background-size: cover; background-position: center; border-radius: 2pt; }
-.contact { display: flex; gap: 4mm; margin-top: 4mm; }
-.contact div { flex: 1; background: #f5f6f8; padding: 4mm; border-top: 2pt solid #0f1b2d; }
-.contact b { display: block; font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: #5f6880; margin-bottom: 1mm; }
-.contact span { font-size: 9pt; color: #DC051E; }
+.supcat { margin-bottom:24px; }
+.supcat-hd { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--red); padding-bottom:6px; margin-bottom:8px; }
+.supcat-hd b { font-size:16px; color:var(--navy); } .supcat-hd span { font-size:12px; color:var(--red); font-weight:700; }
+.supcat p { font-size:13px; color:var(--muted); margin-bottom:8px; }
+.suplist { column-count:3; column-gap:20px; font-size:12.5px; }
+.suplist div { break-inside:avoid; padding:2px 0; color:#44506b; }
+.suplist div::before { content:'▪ '; color:var(--red); }
+@media(max-width:640px){ .suplist{column-count:2;} }
 
-.foot { position: absolute; bottom: 10mm; left: 16mm; right: 16mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: #9aa2b5; border-top: .5pt solid #e6e9ef; padding-top: 2.5mm; }
+.contact { display:flex; gap:14px; margin-top:16px; flex-wrap:wrap; }
+.contact div { flex:1; min-width:180px; background:var(--bg); padding:14px; border-top:2px solid var(--navy); }
+.contact b { display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+.contact span { font-size:14px; color:var(--red); }
 
 @media print {
-  body { background: #fff; }
-  .printbtn { display: none; }
-  .page { margin: 0; box-shadow: none; page-break-after: always; }
-  .page:last-child { page-break-after: auto; }
+  @page { size:A4; margin:14mm; }
+  body { background:#fff; }
+  .topbar, .tabs, .printbtn { display:none !important; }
+  .container { max-width:none; margin:0; padding:0; }
+  .section { display:block !important; box-shadow:none; border-radius:0; padding:0 0 10mm; margin:0; break-before:page; break-inside:auto; }
+  .section:first-of-type { break-before:avoid; }
+  .hero-img { height:150px; }
+  .supcat, table, .stats, .box { break-inside:avoid; }
+  h2, h3 { break-after:avoid; }
 }
 </style></head><body>
 
-<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="topbar">
+  <div class="brand">
+    <img src="logo.png" alt="ORN" onerror="this.style.display='none'">
+    <span class="wm">orn</span>
+    <span class="tag">Europe</span>
+  </div>
+  <button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+</div>
 
-<div class="page cover">
-  <div class="cover-img"></div>
-  <div class="cover-body">
-    <div class="wordmark">orn<span>.</span></div>
-    <div class="cover-desc">Europe</div>
-    <div class="cover-rule"></div>
+<div class="tabs">
+  <button class="tab on" onclick="show('overview',this)">Overview</button>
+  <button class="tab" onclick="show('structure',this)">Structure</button>
+  <button class="tab" onclick="show('quality',this)">Quality &amp; delivery</button>
+  <button class="tab" onclick="show('capability',this)">Capability</button>
+  <button class="tab" onclick="show('suppliers',this)">Suppliers</button>
+  <button class="tab" onclick="show('summary',this)">Summary</button>
+</div>
+
+<div class="container">
+
+<div class="section on hero" id="overview">
+  <div class="hero-img" style="background-image:url('london.jpg')"></div>
+  <div class="hero-body">
     <h1>Business update<b>ORN Europe Limited</b></h1>
-    <div class="cover-sub">UK &amp; European headquarters · Operations, contracting and delivery</div>
-    <div class="cover-meta"><span>17 Hanover Square, Mayfair, London W1S 1BN</span><span>August 2026 · Confidential</span></div>
+    <div class="sub">UK &amp; European headquarters · 17 Hanover Square, Mayfair, London W1S 1BN</div>
+  </div>
+  <div style="padding:36px 40px 0">
+    <div class="eyebrow">Introduction</div>
+    <h2>The European <b>headquarters</b></h2>
+    <div class="rule"></div>
+    <p class="lead">ORN Europe Limited is the group's UK and European headquarters — owned by ORN Nexus PTE and running its own profit and loss account from central London.</p>
+    <p>This is not an operational support desk. The European office takes accountability for the complete delivery chain: contracting the product, controlling the quality of every booking, delivering it in destination, and supporting the guest while they travel.</p>
+    <p>It serves four source markets — TAG USA, Australia, India and trade, and the UAE and Saudi Arabia — from a single cost base, with a supplier network already exceeding 150 across nine service categories.</p>
+    <div class="stats">
+      <div class="stat"><b>150</b><span>Suppliers secured</span></div>
+      <div class="stat"><b>9</b><span>Service categories</span></div>
+      <div class="stat"><b>4</b><span>Source markets</span></div>
+      <div class="stat"><b>24h</b><span>Support coverage</span></div>
+    </div>
+    <h3>Central London headquarters</h3>
+    <p>Based at <b>17 Hanover Square, Mayfair, London W1S 1BN</b> — a prestigious West End address that carries commercial weight, not just presentational value.</p>
+    <ul>
+      <li><b>Credibility with suppliers</b> — a Mayfair address matters in hotel and cruise-line negotiation</li>
+      <li><b>Proximity to the trade</b> — walking distance to major industry offices and partner meetings</li>
+      <li><b>Supplier timezone</b> — negotiation and escalation happen in real time, not overnight</li>
+      <li><b>A base for hosting</b> — suppliers, partners and colleagues from Australia, USA and the Middle East</li>
+    </ul>
+    <div class="imgrow"><div style="background-image:url('paris.jpg')"></div><div style="background-image:url('italy.jpg')"></div><div style="background-image:url('austria.jpg')"></div></div>
   </div>
 </div>
 
-<div class="page">
-  <div class="eyebrow">Introduction</div>
-  <h2>The European <b>headquarters</b></h2>
-  <div class="rule"></div>
-  <p class="lead">ORN Europe Limited is the group's UK and European headquarters — owned by ORN Nexus PTE and running its own profit and loss account from central London.</p>
-  <p>This is not an operational support desk. The European office takes accountability for the complete delivery chain: contracting the product, controlling the quality of every booking, delivering it in destination, and supporting the guest while they travel.</p>
-  <p>It serves four source markets — TAG USA, Australia, India and trade, and the UAE and Saudi Arabia — from a single cost base, with a supplier network already exceeding 150 across nine service categories.</p>
-
-  <div class="stats">
-    <div class="stat"><b>150</b><span>Suppliers secured</span></div>
-    <div class="stat"><b>9</b><span>Service categories</span></div>
-    <div class="stat"><b>4</b><span>Source markets</span></div>
-    <div class="stat"><b>24h</b><span>Support coverage</span></div>
-  </div>
-
-  <h3>Central London headquarters</h3>
-  <p>The operation is based at <b>17 Hanover Square, Mayfair, London W1S 1BN</b> — a prestigious West End address that carries commercial weight, not just presentational value.</p>
-  <ul>
-    <li><b>Credibility with suppliers</b> — a Mayfair address matters in hotel and cruise-line negotiation</li>
-    <li><b>Proximity to the trade</b> — walking distance to major industry offices and partner meetings</li>
-    <li><b>Supplier timezone</b> — negotiation and escalation happen in real time, not overnight</li>
-    <li><b>A base for hosting</b> — suppliers, partners and colleagues from Australia, USA and the Middle East</li>
-  </ul>
-
-  <div class="imgrow"><div style="background-image:url('paris.jpg')"></div><div style="background-image:url('italy.jpg')"></div><div style="background-image:url('austria.jpg')"></div></div>
-  <div class="foot"><span>ORN Europe Limited</span><span>2</span></div>
-</div>
-
-<div class="page">
+<div class="section" id="structure">
   <div class="eyebrow">Structure</div>
   <h2>Who we service, <b>what we do</b></h2>
   <div class="rule"></div>
   <p>The European office sits between the group's source markets and the European supplier base, owning the relationship on both sides.</p>
   <img class="structimg" src="structure.jpg" alt="ORN Europe operations structure">
   <div class="box"><b>Group benefit:</b> four markets served from one cost base; the group owns European product rather than buying it at arm's length; faster payments at lower cost with full transparency.</div>
-  <div class="foot"><span>ORN Europe Limited</span><span>3</span></div>
 </div>
 
-<div class="page">
+<div class="section" id="quality">
   <div class="eyebrow">Quality &amp; delivery</div>
   <h2>Booking quality control <b>and delivery</b></h2>
   <div class="rule"></div>
   <p class="lead">The function that most directly protects the group's reputation — and the clearest change from the previous model.</p>
-
   <h3>Structured pre-travel reconfirmation</h3>
   <p>Every European booking passes through a defined gate schedule before travel rather than being checked reactively when something fails. Components are verified well ahead of arrival, so problems surface days or weeks out — when they can still be fixed — instead of at the hotel desk with the guest standing there.</p>
-
   <h3>Six-point verification standard</h3>
-  <p>Each service on every booking is confirmed against a consistent set of checks: operator, contact telephone with country code, confirmation reference, time and location. Where details are missing from a supplier confirmation they are researched and completed before the booking passes the gate. Nothing travels unverified.</p>
-
+  <p>Each service on every booking is confirmed against a consistent set of checks: operator, contact telephone with country code, confirmation reference, time and location. Where details are missing they are researched and completed before the booking passes the gate. Nothing travels unverified.</p>
   <h3>Arrivals monitoring</h3>
   <p>A rolling arrivals board is reviewed daily. Every booking arriving in the coming days is confirmed complete before the guest departs their home country.</p>
-
   <h3>Ownership of the full chain</h3>
   <div class="box">Contract → Supplier → Booking → Financial control → Reconfirmation → Quality control → Delivery → Customer support → Escalation</div>
   <p>Previously this chain was fragmented across individual resources with no single point of accountability. It now sits with one team, in one place, to one standard.</p>
-
   <h3>In-destination delivery and escalation</h3>
-  <p>Support does not stop at confirmation. The team manages guests while they are travelling in Europe — handling changes, supplier failures and escalations in real time. Where a supplier underperforms the failure is logged, escalated and reflected in future contracting decisions, so quality control feeds directly back into commercial terms.</p>
-
+  <p>Support does not stop at confirmation. The team manages guests while they are travelling in Europe — handling changes, supplier failures and escalations in real time. Where a supplier underperforms the failure is logged, escalated and reflected in future contracting decisions.</p>
   <h3>24-hour support</h3>
   <table>
     <tr><th>Market</th><th>Coverage provided</th></tr>
@@ -159,13 +167,12 @@ td.num { color: #DC051E; font-weight: 700; text-align: center; width: 18mm; }
     <tr><td><b>Australia</b></td><td>Overnight cover while Australia is closed — no gap in response</td></tr>
     <tr><td><b>UAE / Middle East</b></td><td>European delivery for the growing Gulf outbound market</td></tr>
   </table>
-  <p>As Australia closes, support transitions to Europe. As Europe closes it transitions onward across the network — a genuine follow-the-sun model with no market left uncovered.</p>
-  <div class="foot"><span>ORN Europe Limited</span><span>4</span></div>
+  <p>As Australia closes, support transitions to Europe. As Europe closes it transitions onward — a genuine follow-the-sun model with no market left uncovered.</p>
 </div>
 
-<div class="page">
+<div class="section" id="capability">
   <div class="eyebrow">Capability</div>
-  <h2>Previous model vs <b>European headquarters</b></h2>
+  <h2>Previous model vs <b>European HQ</b></h2>
   <div class="rule"></div>
   <table>
     <tr><th>Previous model</th><th>UK / Europe headquarters</th></tr>
@@ -182,11 +189,9 @@ td.num { color: #DC051E; font-weight: 700; text-align: center; width: 18mm; }
     <tr><td>Limited contracting ownership</td><td>Full European contracting capability</td></tr>
     <tr><td>No integrated DMC function</td><td>European DMC capability</td></tr>
     <tr><td>Product sourced as required</td><td><b>150+ supplier network</b> across nine service categories</td></tr>
-    <tr><td>Limited financial/supplier alignment</td><td>Bookings moving to approved bona fide suppliers</td></tr>
     <tr><td>Standard cruise sourcing</td><td>Cruise contracting, group allocation, charter development</td></tr>
     <tr><td>Primarily operational</td><td>Operations + commercial + contracting + QC + delivery</td></tr>
   </table>
-
   <h3>Seven functions in one operation</h3>
   <div class="two">
     <div>
@@ -201,131 +206,101 @@ td.num { color: #DC051E; font-weight: 700; text-align: center; width: 18mm; }
       <p><b>Commercial development</b> — using European presence and volume to improve margin and create direct product.</p>
     </div>
   </div>
-  <div class="foot"><span>ORN Europe Limited</span><span>5</span></div>
 </div>
 
-<div class="page">
+<div class="section" id="suppliers">
   <div class="eyebrow">Secured supplier access</div>
-  <h2>Europe supplier <b>access &amp; product range</b></h2>
+  <h2>Supplier <b>access &amp; product range</b></h2>
   <div class="rule"></div>
   <p class="lead">The Europe office has secured access to a broad panel of leading travel suppliers — enabling us to quote and deliver product within SLA, globally.</p>
-  <p>Coverage spans ocean and river cruise, rail, ferries, air, ground transport, accommodation, tour operators and DMCs, attractions and specialist holidays. This breadth lets the Europe team build and complete quotes and bookings within SLA, wherever the request originates.</p>
-
   <table>
     <tr><th>Service category</th><th class="num">No.</th><th>What it covers</th></tr>
-    <tr><td><b>Ocean &amp; river cruise</b></td><td class="num">24</td><td>Ocean, river and expedition lines — luxury and premium ocean brands to European river and small-ship specialists</td></tr>
-    <tr><td><b>Rail</b></td><td class="num">4</td><td>Rail operators and rail-holiday specialists, including high-speed cross-Channel and escorted rail journeys</td></tr>
-    <tr><td><b>Ferries &amp; tunnel</b></td><td class="num">4</td><td>Ferry operators and the Channel Tunnel for vehicle and foot-passenger crossings across Europe and Ireland</td></tr>
-    <tr><td><b>Flights &amp; air</b></td><td class="num">5</td><td>Air consolidators, seat-only specialists and airline holiday divisions for flight-inclusive itineraries</td></tr>
-    <tr><td><b>Car hire &amp; transfers</b></td><td class="num">7</td><td>Car hire, private and shared transfers, taxis, airport lounges and marine charter</td></tr>
-    <tr><td><b>Hotels, villas &amp; beds</b></td><td class="num">16</td><td>Bed banks, villa collections and aggregators giving broad hotel and self-catering inventory at trade rates</td></tr>
-    <tr><td><b>Tour operators &amp; DMCs</b></td><td class="num">76</td><td>Tour operators, destination management companies and tailor-made specialists, worldwide and regional</td></tr>
+    <tr><td><b>Ocean &amp; river cruise</b></td><td class="num">24</td><td>Ocean, river and expedition lines — luxury and premium to river and small-ship specialists</td></tr>
+    <tr><td><b>Rail</b></td><td class="num">4</td><td>Rail operators and rail-holiday specialists, cross-Channel and escorted journeys</td></tr>
+    <tr><td><b>Ferries &amp; tunnel</b></td><td class="num">4</td><td>Ferry operators and the Channel Tunnel across Europe and Ireland</td></tr>
+    <tr><td><b>Flights &amp; air</b></td><td class="num">5</td><td>Air consolidators, seat-only specialists and airline holiday divisions</td></tr>
+    <tr><td><b>Car hire &amp; transfers</b></td><td class="num">7</td><td>Car hire, private and shared transfers, taxis, lounges and marine charter</td></tr>
+    <tr><td><b>Hotels, villas &amp; beds</b></td><td class="num">16</td><td>Bed banks, villa collections and aggregators at trade rates</td></tr>
+    <tr><td><b>Tour operators &amp; DMCs</b></td><td class="num">76</td><td>Tour operators, DMCs and tailor-made specialists, worldwide and regional</td></tr>
     <tr><td><b>Attractions &amp; extras</b></td><td class="num">9</td><td>Attractions, theme parks, activity resorts and experience providers</td></tr>
-    <tr><td><b>Ski &amp; specialist</b></td><td class="num">5</td><td>Ski, snow and seasonal specialists for winter-sports and themed holidays</td></tr>
+    <tr><td><b>Ski &amp; specialist</b></td><td class="num">5</td><td>Ski, snow and seasonal specialists</td></tr>
     <tr><td><b>Total</b></td><td class="num">150</td><td>Suppliers secured across all service types</td></tr>
   </table>
 
-  <div class="box"><b>How this supports quotes &amp; bookings:</b> where a sales request has no product loaded, the Europe team sources it from this panel and returns a quote the same day, or within 24 hours. Send requests with dates, passenger numbers, destination and service to <b>quoteseu@orn.com</b>.</div>
-  <div class="foot"><span>ORN Europe Limited</span><span>6</span></div>
-</div>
-
-<div class="page">
-  <div class="eyebrow">The suppliers</div>
-  <h2>Suppliers <b>by service</b></h2>
-  <div class="rule"></div>
-
   <div class="supcat">
-    <div class="supcat-hd"><b>Ocean &amp; river cruise</b><span>24 suppliers</span></div>
-    <p>Ocean, river and expedition cruise lines — from luxury and premium ocean brands to European river and small-ship specialists.</p>
-    <div class="suplist">
-      <div>Ama Waterways</div><div>Ambassador Cruise Holidays</div><div>Avalon Waterways (Globus)</div><div>Azamara Club Cruises</div><div>Celestyal Cruises</div><div>Cruising Power</div><div>Crystal Cruises</div><div>Disney Cruise Line</div><div>Emerald Cruises</div><div>Explora Journeys</div><div>Fred Olsen Cruise Lines</div><div>Holland America Line</div><div>Hurtigruten UK</div><div>MSC Cruises S.A</div><div>Norwegian Cruise Line</div><div>Oceania Cruises</div><div>Ponant Cruises</div><div>Regent Seven Seas Cruises</div><div>Riverside Luxury Cruises</div><div>Seabourn</div><div>Silversea Cruises</div><div>Star Clippers</div><div>Uniworld River Cruises</div><div>Windstar Cruises</div>
-    </div>
+    <div class="supcat-hd"><b>Ocean &amp; river cruise</b><span>24</span></div>
+    <div class="suplist"><div>Ama Waterways</div><div>Ambassador Cruise Holidays</div><div>Avalon Waterways (Globus)</div><div>Azamara Club Cruises</div><div>Celestyal Cruises</div><div>Cruising Power</div><div>Crystal Cruises</div><div>Disney Cruise Line</div><div>Emerald Cruises</div><div>Explora Journeys</div><div>Fred Olsen Cruise Lines</div><div>Holland America Line</div><div>Hurtigruten UK</div><div>MSC Cruises S.A</div><div>Norwegian Cruise Line</div><div>Oceania Cruises</div><div>Ponant Cruises</div><div>Regent Seven Seas Cruises</div><div>Riverside Luxury Cruises</div><div>Seabourn</div><div>Silversea Cruises</div><div>Star Clippers</div><div>Uniworld River Cruises</div><div>Windstar Cruises</div></div>
   </div>
-
   <div class="supcat">
-    <div class="supcat-hd"><b>Rail</b><span>4 suppliers</span></div>
-    <p>Rail operators and rail-holiday specialists, including high-speed cross-Channel services and escorted rail journeys.</p>
-    <div class="suplist"><div>Eurostar International</div><div>Great Rail Journeys</div><div>Northern Belle</div><div>Railbookers</div></div>
+    <div class="supcat-hd"><b>Tour operators &amp; DMCs</b><span>76</span></div>
+    <div class="suplist"><div>APT Group</div><div>Abercrombie &amp; Kent Travel</div><div>Africa Collection</div><div>African Pride</div><div>Alfa Travel</div><div>American Holidays</div><div>Anex Tour</div><div>Audley Travel Group</div><div>Beachcomber Tours</div><div>Canterbury Travel London</div><div>Carrier</div><div>Citalia (Travelopia)</div><div>Cox &amp; Kings</div><div>CroisiEurope</div><div>Cyplon Holidays</div><div>Dynamic</div><div>Enable Holidays</div><div>Exoticca</div><div>Explore Worldwide</div><div>Exsus</div><div>First Class Holidays</div><div>Fred. Holidays</div><div>G Adventures</div><div>Gold Medal Travel Group</div><div>Great Little Breaks</div><div>HX Expeditions</div><div>ITC Luxury Travel Group</div><div>If Only Holidays</div><div>Innstant Travel</div><div>Insider Journeys</div><div>Intrepid Travel Group UK</div><div>Involved Holidays</div><div>Ionian Island Holidays</div><div>JTA Holidays</div><div>Jetset Tours</div><div>Journey Latin America</div><div>Kirker Holidays</div><div>Kuoni Travel</div><div>Latin Routes</div><div>Leger Holidays / Shearings</div><div>Lime Management</div><div>Links Travel &amp; Tours</div><div>Lusso Travel</div><div>Mainstreet USA</div><div>Major Travel Plc</div><div>Mercury Holidays</div><div>Neilson Active Holidays</div><div>Newmarket Holidays</div><div>North American Travel Service</div><div>Omega Holidays</div><div>Orbital Travel</div><div>Osprey Holidays</div><div>Planet Holidays</div><div>Premier Holidays</div><div>Prestige Travel</div><div>Rainbow Tours</div><div>Red Sea Holidays UK</div><div>Riviera Travel</div><div>Solmar Travel</div><div>Sovereign Holidays (Travelopia)</div><div>Spectate Travel (ITC)</div><div>Sunset Travel</div><div>Sunspot Tours</div><div>Sunvil Holidays</div><div>TTC Agents</div><div>TUI UK</div><div>Tauck</div><div>Teldar Travel</div><div>Titan Travel</div><div>Transun</div><div>Travel Solutions</div><div>Travelpack</div><div>Travelsphere &amp; Just You</div><div>Typically Italian Holidays</div><div>Wendy Wu Tours</div></div>
   </div>
-
   <div class="supcat">
-    <div class="supcat-hd"><b>Ferries &amp; tunnel</b><span>4 suppliers</span></div>
-    <p>Ferry operators and the Channel Tunnel for vehicle and foot-passenger crossings across Europe and Ireland.</p>
-    <div class="suplist"><div>Brittany Ferries</div><div>Direct Ferries</div><div>Euro Tunnel</div><div>Irish Ferries</div></div>
-  </div>
-
-  <div class="supcat">
-    <div class="supcat-hd"><b>Flights &amp; air</b><span>5 suppliers</span></div>
-    <p>Air consolidators, seat-only specialists and airline holiday divisions for flight-inclusive itineraries.</p>
-    <div class="suplist"><div>Aviate</div><div>Canadian Affair</div><div>Easyjet Holidays</div><div>Etihad Holidays</div><div>Virgin Flight Store</div></div>
-  </div>
-
-  <div class="supcat">
-    <div class="supcat-hd"><b>Car hire &amp; transfers</b><span>7 suppliers</span></div>
-    <p>Car hire, private and shared transfers, taxis, airport lounges and marine charter — the ground-transport layer of a trip.</p>
-    <div class="suplist"><div>DriveAway</div><div>Flexible Autos</div><div>Holiday Taxis</div><div>Hoppa</div><div>Lifts To Ltd</div><div>Lounge Pass</div><div>Sunsail</div></div>
-  </div>
-
-  <div class="supcat">
-    <div class="supcat-hd"><b>Hotels, villas &amp; beds</b><span>16 suppliers</span></div>
-    <p>Bed banks, villa collections and accommodation aggregators giving broad hotel and self-catering inventory at trade rates.</p>
+    <div class="supcat-hd"><b>Hotels, villas &amp; beds</b><span>16</span></div>
     <div class="suplist"><div>Bedsonline</div><div>Bookabed</div><div>CV Villas</div><div>Destinations of the World — Webbeds</div><div>Elegant Resorts</div><div>Goodlife Florida Villas</div><div>Hoseasons</div><div>Interhome</div><div>Ocean Florida</div><div>RateHawk</div><div>SPL Villas</div><div>Simply Cuba</div><div>Stuba (Getabed)</div><div>Sunhotels Webbeds</div><div>The Villa Collection</div><div>Top Villas</div></div>
   </div>
-  <div class="foot"><span>ORN Europe Limited</span><span>7</span></div>
-</div>
-
-<div class="page">
   <div class="supcat">
-    <div class="supcat-hd"><b>Tour operators &amp; DMCs</b><span>76 suppliers</span></div>
-    <p>Tour operators, destination management companies and tailor-made specialists spanning worldwide and regional programmes.</p>
-    <div class="suplist">
-      <div>APT Group</div><div>Abercrombie &amp; Kent Travel</div><div>Africa Collection</div><div>African Pride</div><div>Alfa Travel</div><div>American Holidays</div><div>Anex Tour</div><div>Audley Travel Group</div><div>Beachcomber Tours</div><div>Canterbury Travel London</div><div>Carrier</div><div>Citalia (Travelopia)</div><div>Cox &amp; Kings</div><div>CroisiEurope</div><div>Cyplon Holidays</div><div>Dynamic</div><div>Enable Holidays</div><div>Exoticca</div><div>Explore Worldwide</div><div>Exsus</div><div>First Class Holidays</div><div>Fred. Holidays</div><div>G Adventures</div><div>Gold Medal Travel Group</div><div>Great Little Breaks</div><div>HX (Expeditions)</div><div>HX Expeditions</div><div>ITC Luxury Travel Group</div><div>If Only Holidays</div><div>Innstant Travel</div><div>Insider Journeys</div><div>Intrepid Travel Group UK</div><div>Involved Holidays</div><div>Ionian Island Holidays</div><div>JTA Holidays</div><div>Jetset Tours</div><div>Journey Latin America</div><div>Kirker Holidays</div><div>Kuoni Travel</div><div>Latin Routes</div><div>Leger Holidays / Shearings</div><div>Lime Management</div><div>Links Travel &amp; Tours</div><div>Lusso Travel</div><div>Mainstreet USA</div><div>Major Travel Plc</div><div>Mercury Holidays</div><div>Neilson Active Holidays</div><div>Newmarket Holidays</div><div>North American Travel Service</div><div>Omega Holidays</div><div>Orbital Travel</div><div>Osprey Holidays</div><div>Planet Holidays</div><div>Premier Holidays</div><div>Prestige Travel</div><div>Rainbow Tours</div><div>Red Sea Holidays UK</div><div>Riviera Travel</div><div>Solmar Travel</div><div>Sovereign Holidays (Travelopia)</div><div>Spectate Travel (ITC)</div><div>Sunset Travel</div><div>Sunspot Tours</div><div>Sunvil Holidays</div><div>TTC Agents</div><div>TUI UK</div><div>Tauck</div><div>Teldar Travel</div><div>Titan Travel</div><div>Transun</div><div>Travel Solutions</div><div>Travelpack</div><div>Travelsphere &amp; Just You</div><div>Typically Italian Holidays</div><div>Wendy Wu Tours</div>
-    </div>
+    <div class="supcat-hd"><b>Car hire &amp; transfers</b><span>7</span></div>
+    <div class="suplist"><div>DriveAway</div><div>Flexible Autos</div><div>Holiday Taxis</div><div>Hoppa</div><div>Lifts To Ltd</div><div>Lounge Pass</div><div>Sunsail</div></div>
   </div>
-
   <div class="supcat">
-    <div class="supcat-hd"><b>Attractions &amp; extras</b><span>9 suppliers</span></div>
-    <p>Attractions, theme parks, activity resorts and experience providers to complete an itinerary.</p>
+    <div class="supcat-hd"><b>Flights &amp; air</b><span>5</span></div>
+    <div class="suplist"><div>Aviate</div><div>Canadian Affair</div><div>Easyjet Holidays</div><div>Etihad Holidays</div><div>Virgin Flight Store</div></div>
+  </div>
+  <div class="supcat">
+    <div class="supcat-hd"><b>Rail</b><span>4</span></div>
+    <div class="suplist"><div>Eurostar International</div><div>Great Rail Journeys</div><div>Northern Belle</div><div>Railbookers</div></div>
+  </div>
+  <div class="supcat">
+    <div class="supcat-hd"><b>Ferries &amp; tunnel</b><span>4</span></div>
+    <div class="suplist"><div>Brittany Ferries</div><div>Direct Ferries</div><div>Euro Tunnel</div><div>Irish Ferries</div></div>
+  </div>
+  <div class="supcat">
+    <div class="supcat-hd"><b>Attractions &amp; extras</b><span>9</span></div>
     <div class="suplist"><div>Attraction World</div><div>Club Med</div><div>Disneyland Resort Paris</div><div>DoSomethingDifferent.com</div><div>Mark Warner</div><div>Not In The Guidebooks</div><div>Sandals Holidays</div><div>Walt Disney Travel Company</div><div>Worldchoice Sports</div></div>
   </div>
-
   <div class="supcat">
-    <div class="supcat-hd"><b>Ski &amp; specialist</b><span>5 suppliers</span></div>
-    <p>Ski, snow and seasonal specialists for winter-sports and themed holidays.</p>
+    <div class="supcat-hd"><b>Ski &amp; specialist</b><span>5</span></div>
     <div class="suplist"><div>Crystal Ski Holidays (TUI)</div><div>Santa's Lapland</div><div>Ski Gems</div><div>Ski Independence</div><div>Ski World</div></div>
   </div>
-
   <div class="imgrow"><div style="background-image:url('cruise1.jpg')"></div><div style="background-image:url('cruise2.jpg')"></div></div>
-  <div class="foot"><span>ORN Europe Limited</span><span>8</span></div>
 </div>
 
-<div class="page">
+<div class="section" id="summary">
   <div class="eyebrow">Summary</div>
   <h2>Board <b>summary</b></h2>
   <div class="rule"></div>
   <p class="lead">The European operation has moved from fragmented operational support to an accountable structure controlling the complete delivery chain — from contract through to customer escalation.</p>
   <p>The headquarters gives Australia, TAG USA, India and the Middle East a genuine European operations, DMC, contracting, quality control and service centre — based in central London, with a supplier network already exceeding 150 across nine service categories.</p>
-
   <h3>What this delivers to the group</h3>
   <ul>
     <li><b>Four source markets served from one cost base</b> — each additional market is marginal effort, not a new office</li>
-    <li><b>The group owns European product</b> rather than buying it at arm's length from third-party operators</li>
+    <li><b>The group owns European product</b> rather than buying it at arm's length</li>
     <li><b>A European seat at the table</b> — contracting from the UK, in the supplier timezone, with direct market access</li>
     <li><b>Faster payments at lower cost</b> — same-day supplier settlement from the UK, no cross-border delay, no FX leg</li>
     <li><b>Full transparency</b> — live visibility in Xero with monthly reporting to ORN Nexus PTE and Bangalore</li>
   </ul>
-
   <div class="contact">
     <div><b>Quotes &amp; bookings</b><span>quoteseu@orn.com</span></div>
     <div><b>Booking admin</b><span>supporteu@orn.com</span></div>
-  </div>
-  <div class="contact">
-    <div><b>Customer contact</b><span>customereu@orn.com</span></div>
     <div><b>Escalations</b><span>escalationseu@orn.com</span></div>
   </div>
-
-  <div class="box" style="margin-top:6mm"><b>ORN Europe Limited</b> · 17 Hanover Square, Mayfair, London W1S 1BN<br>Turnaround for missing product: same day, or within 24 hours. Confidential — internal and trade use only.</div>
-  <div class="foot"><span>ORN Europe Limited · August 2026</span><span>9</span></div>
+  <div class="box" style="margin-top:20px"><b>ORN Europe Limited</b> · 17 Hanover Square, Mayfair, London W1S 1BN · Confidential — internal and trade use only.</div>
 </div>
 
+</div>
+
+<script>
+function show(id, el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('beforeprint', ()=>document.querySelectorAll('.section').forEach(s=>s.classList.add('on')));
+window.addEventListener('afterprint', ()=>{
+  document.querySelectorAll('.section').forEach((s,i)=>s.classList.toggle('on', i===0 || document.querySelectorAll('.tab')[i]?.classList.contains('on')));
+});
+</script>
 </body></html>
