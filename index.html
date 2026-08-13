@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORN Europe Limited — UK/Europe Operation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--red:#DC051E;--red2:#b00418;--black:#0a0a0a;--navy:#0f1b2d;--ink:#1d2433;--muted:#5f6880;--line:#e6e9ef;--bg:#f5f6f8;}
@@ -11,14 +12,13 @@ body{font-family:'Segoe UI',Calibri,Arial,sans-serif;color:var(--ink);font-size:
 .topbar{background:var(--black);color:#fff;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.25);}
 .brand{display:flex;align-items:center;gap:14px;}
 .brand img{height:40px;display:block;}
-.brand .tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.85;border-left:1px solid rgba(255,255,255,.3);padding-left:14px;}
 .nav{display:flex;gap:2px;flex-wrap:wrap;}
-.nav button{background:none;border:none;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;padding:8px 13px;border-radius:6px;cursor:pointer;font-family:inherit;transition:all .15s;}
+.nav button{background:none;border:none;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;padding:8px 12px;border-radius:6px;cursor:pointer;font-family:inherit;transition:all .15s;}
 .nav button:hover{background:rgba(255,255,255,.12);color:#fff;}
 .nav button.on{color:#fff;background:var(--red);}
-@media(max-width:920px){.nav{display:none;}}
+@media(max-width:980px){.nav{display:none;}}
 .mnav{display:none;}
-@media(max-width:920px){.mnav{display:block;background:var(--black);padding:10px 5vw;}.mnav select{width:100%;padding:10px;font-size:15px;border-radius:6px;border:none;font-family:inherit;}}
+@media(max-width:980px){.mnav{display:block;background:var(--black);padding:10px 5vw;}.mnav select{width:100%;padding:10px;font-size:15px;border-radius:6px;border:none;font-family:inherit;}}
 
 .page{display:none;}
 .page.on{display:block;}
@@ -66,7 +66,34 @@ p{margin-bottom:14px;}
 .mkt h3{font-size:17px;color:var(--navy);margin-bottom:4px;}
 .mkt p{font-size:14px;color:var(--muted);margin:0;}
 
-.structimg{width:100%;border:1px solid var(--line);border-radius:8px;margin:8px 0 4px;box-shadow:0 1px 8px rgba(0,0,0,.06);}
+.slabel{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:26px 0 10px;}
+.sbox{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:8px;padding:18px;transition:box-shadow .15s,transform .15s;}
+.sbox:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px);}
+.sbox b{display:block;font-size:16px;color:var(--navy);margin-bottom:4px;}
+.sbox span{font-size:13px;color:var(--muted);}
+.sarrow{text-align:center;color:var(--red);font-size:24px;line-height:1;margin:6px 0;}
+.shub{background:var(--navy);color:#fff;border-radius:10px;padding:26px 28px;text-align:center;box-shadow:0 2px 14px rgba(0,0,0,.14);}
+.shub b{display:block;font-size:24px;font-weight:800;margin-bottom:5px;}
+.shub span{font-size:14px;opacity:.85;}
+.sfunc{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);border-radius:8px;padding:18px;cursor:pointer;transition:box-shadow .15s,transform .15s;}
+.sfunc:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px);}
+.sfunc-hd{display:flex;justify-content:space-between;align-items:center;}
+.sfunc-hd b{font-size:16px;color:var(--navy);}
+.sfunc-hd .chev{color:var(--red);font-size:18px;transition:transform .2s;}
+.sfunc.open .chev{transform:rotate(45deg);}
+.sfunc .sub{font-size:13px;color:var(--muted);margin-top:4px;}
+.sfunc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.sfunc.open .sfunc-body{max-height:300px;}
+.sfunc-body ul{margin:12px 0 0 16px;font-size:13.5px;color:var(--muted);}
+.sfunc-body li{margin-bottom:4px;}
+.sbenefit{background:#fff;border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:14px 20px;margin:14px 0;font-size:15px;font-weight:700;color:var(--navy);box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.sbenefit b{color:var(--red);}
+.finflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:10px;margin:16px 0;}
+@media(max-width:760px){.finflow{grid-template-columns:1fr;}.finflow .fa{display:none;}}
+.fcell{background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:8px;padding:16px;text-align:center;}
+.fcell b{display:block;font-size:15px;color:var(--navy);margin-bottom:3px;}
+.fcell span{font-size:13px;color:var(--muted);}
+.fa{color:var(--red);font-size:22px;text-align:center;font-weight:700;}
 
 .team{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;cursor:pointer;transition:box-shadow .15s;}
 .team:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
@@ -110,7 +137,9 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 .infocard{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px 24px;border-top:3px solid var(--red);}
 .infocard h3{font-size:16px;color:var(--navy);margin-bottom:10px;}
 .infocard p{font-size:14.5px;color:var(--muted);margin:2px 0;}
-.infocard a{color:var(--red);text-decoration:none;}
+
+.mapwrap{width:100%;height:520px;border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden;}
+@media(max-width:700px){.mapwrap{height:380px;}}
 
 .footer{background:var(--black);color:#fff;padding:40px 5vw;text-align:center;font-size:14px;}
 .footer b{color:#fff;}.footer .red{color:var(--red);}
@@ -120,12 +149,11 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 </style></head><body>
 
 <div class="topbar">
-  <div class="brand">
-    <img src="orn-logo.jpg" alt="ORN Europe">
-  </div>
+  <div class="brand"><img src="orn-logo.jpg" alt="ORN Europe"></div>
   <div class="nav" id="nav">
     <button class="on" onclick="go('overview',this)">Overview</button>
     <button onclick="go('markets',this)">Who we service</button>
+    <button onclick="go('coverage',this)">Coverage</button>
     <button onclick="go('structure',this)">Structure</button>
     <button onclick="go('functions',this)">What we do</button>
     <button onclick="go('cruise',this)">ORN Cruise</button>
@@ -138,10 +166,10 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
 <div class="mnav">
   <select onchange="go(this.value)">
     <option value="overview">Overview</option><option value="markets">Who we service</option>
-    <option value="structure">Structure</option><option value="functions">What we do</option>
-    <option value="cruise">ORN Cruise</option><option value="quality">Quality &amp; support</option>
-    <option value="team">The team</option><option value="suppliers">Suppliers</option>
-    <option value="contact">Contact</option>
+    <option value="coverage">Coverage</option><option value="structure">Structure</option>
+    <option value="functions">What we do</option><option value="cruise">ORN Cruise</option>
+    <option value="quality">Quality &amp; support</option><option value="team">The team</option>
+    <option value="suppliers">Suppliers</option><option value="contact">Contact</option>
   </select>
 </div>
 
@@ -185,14 +213,68 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
   </section>
 </div>
 
+<div class="page" id="coverage">
+  <section>
+    <div class="eyebrow">Coverage</div>
+    <h2>Our European <b>footprint</b></h2>
+    <div class="rule"></div>
+    <p class="lead">Contracting and delivering across the whole of Europe — with dedicated coverage of every major holiday destination and gateway city. Hover a marker to see the city.</p>
+    <div id="euromap" class="mapwrap"></div>
+    <div class="grid g4" style="margin-top:24px">
+      <div class="mkt"><h3>Western Europe</h3><p>UK, France, Spain, Portugal, Ireland, Benelux</p></div>
+      <div class="mkt"><h3>Central Europe</h3><p>Germany, Austria, Switzerland, Czechia, Poland</p></div>
+      <div class="mkt"><h3>Mediterranean</h3><p>Italy, Greece, Croatia, Malta, Cyprus, Turkey</p></div>
+      <div class="mkt"><h3>Nordic &amp; beyond</h3><p>Scandinavia, Iceland, Baltics and Eastern Europe</p></div>
+    </div>
+    <div class="box" style="margin-top:20px"><b>Key destinations covered:</b> London · Paris · Rome · Venice · Florence · Barcelona · Madrid · Amsterdam · Vienna · Prague · Athens · Santorini · Dubrovnik · Lisbon · Edinburgh · Reykjavik · Zurich · and every major gateway across the continent.</div>
+  </section>
+</div>
+
 <div class="page" id="structure">
   <section>
     <div class="eyebrow">Structure</div>
     <h2>How the operation <b>is structured</b></h2>
     <div class="rule"></div>
-    <p class="lead">The European office sits between the group's source markets and the European supplier base, owning the relationship on both sides.</p>
-    <img class="structimg" src="structure.jpg" alt="ORN Europe operations structure">
-    <div class="box"><b>Group benefit:</b> four markets served from one cost base; the group owns European product rather than buying it at arm's length; faster payments at lower cost, with full transparency in Xero and monthly reporting to ORN Nexus PTE and Bangalore.</div>
+    <p class="lead">ORN Europe Limited sits between the group's source markets and the European supplier base — owning the relationship on both sides. Hover any box; click a function to open it.</p>
+
+    <div class="slabel">Who we service</div>
+    <div class="grid g4">
+      <div class="sbox"><b>TAG USA</b><span>Groups &amp; escorted · one European desk</span></div>
+      <div class="sbox"><b>Australia</b><span>FIT, groups · covers their night</span></div>
+      <div class="sbox"><b>India &amp; trade</b><span>IV, agents · shared suppliers</span></div>
+      <div class="sbox"><b>UAE &amp; Saudi</b><span>Middle East · growth market</span></div>
+    </div>
+    <div class="sbenefit"><b>Nexus benefit:</b> four markets served from one cost base.</div>
+
+    <div class="sarrow">▼</div>
+    <div class="shub"><b>ORN Europe Limited</b><span>Owned by ORN Nexus PTE · runs its own P&amp;L · UK &amp; Europe hub</span></div>
+    <div class="sarrow">▼</div>
+
+    <div class="slabel">What we do — click to expand</div>
+    <div class="grid g4">
+      <div class="sfunc" onclick="this.classList.toggle('open')"><div class="sfunc-hd"><b>Quality control</b><span class="chev">+</span></div><div class="sub">Every arrival checked</div><div class="sfunc-body"><ul><li>Structured 6-point gate check</li><li>Reconfirmed with supplier</li><li>Failures caught days out</li></ul></div></div>
+      <div class="sfunc" onclick="this.classList.toggle('open')"><div class="sfunc-hd"><b>Contracting</b><span class="chev">+</span></div><div class="sub">150+ suppliers secured</div><div class="sfunc-body"><ul><li>Negotiated once in the UK</li><li>Renegotiating key agreements</li><li>Used by every office</li></ul></div></div>
+      <div class="sfunc" onclick="this.classList.toggle('open')"><div class="sfunc-hd"><b>Cruise</b><span class="chev">+</span></div><div class="sub">Owned product, real margin</div><div class="sfunc-body"><ul><li>Contracting &amp; allocation</li><li>Charter negotiation</li><li>Destination &amp; Evergreen cruises</li></ul></div></div>
+      <div class="sfunc" onclick="this.classList.toggle('open')"><div class="sfunc-hd"><b>Delivery</b><span class="chev">+</span></div><div class="sub">In-destination ops · 24h</div><div class="sfunc-body"><ul><li>Real-time issue handling</li><li>Follow-the-sun support</li><li>Sales support for TAG</li></ul></div></div>
+    </div>
+    <div class="sbenefit"><b>Nexus benefit:</b> the group owns European product instead of buying it at arm's length.</div>
+
+    <div class="slabel">Financial flow</div>
+    <div class="finflow">
+      <div class="fcell"><b>Start-up float</b><span>Into UK bank</span></div>
+      <div class="fa">→</div>
+      <div class="fcell"><b>UK bank account</b><span>Raj Kumar signs off spend</span></div>
+      <div class="fa">→</div>
+      <div class="fcell"><b>Suppliers</b><span>Paid same day, no FX leg</span></div>
+    </div>
+    <div class="finflow">
+      <div class="fcell"><b>ORN Nexus PTE</b><span>Monthly P&amp;L</span></div>
+      <div class="fa">←</div>
+      <div class="fcell"><b>Xero</b><span>Live visibility, full audit</span></div>
+      <div class="fa">→</div>
+      <div class="fcell"><b>Bangalore</b><span>Monthly P&amp;L, group finance</span></div>
+    </div>
+    <div class="sbenefit"><b>Nexus benefit:</b> faster payments, lower cost, full control and transparency.</div>
   </section>
 </div>
 
@@ -235,7 +317,7 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
     <div class="rule"></div>
     <p class="lead">A dedicated cruise business, built on real cruise-industry expertise and direct line relationships.</p>
     <p>ORN Cruise is being established as a solid, standalone cruise operation within the group — contracting, cruise-line relationships, charter negotiation and allocation, with a particular focus on <b>focused destination cruises</b> and <b>Evergreen</b> product. The ambition is to move from sourcing cruise as required to owning a genuine cruise business with real margin and direct supplier relationships.</p>
-    <p>The build is led by senior cruise-industry expertise — a major cruise advisor and head of business from one of the largest cruise companies now working with ORN to grow and establish ORN Cruise, alongside three decades in travel and cruising.</p>
+    <p>The build is led by senior cruise-industry expertise now working with ORN to grow and establish ORN Cruise.</p>
     <div class="grid g3" style="margin-top:8px">
       <div class="mkt"><h3>Contracting &amp; allocation</h3><p>Direct line relationships, allotment blocks, group space and charter negotiation.</p></div>
       <div class="mkt"><h3>Focused destination cruises</h3><p>Curated, destination-led cruise programmes built as owned product.</p></div>
@@ -272,35 +354,30 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
     <div class="rule"></div>
     <p class="lead">Decades of combined experience across every aspect of the travel business — hands-on with the bookings daily. Click any team member to read more.</p>
     <div class="grid g2">
-
       <div class="team" onclick="this.classList.toggle('open')">
         <div class="team-hd"><div class="av">AK</div><div><h3>Ajay Kawa</h3><div class="role">CEO · Europe · Contracting</div></div><span class="chev">+</span></div>
         <div class="short">30 years in travel at CEO and senior leadership level.</div>
         <div class="team-body"><p>Over 30 years in the travel industry at CEO and senior leadership level, spanning operations, contracting, commercial growth, product and distribution across the full breadth of the travel business. Ajay has built and scaled travel operations internationally and drives ORN Europe's contracting, supplier strategy and commercial direction.</p>
         <div class="tags"><span class="tag">CEO leadership</span><span class="tag">Contracting</span><span class="tag">Commercial growth</span><span class="tag">Product &amp; distribution</span><span class="tag">Business scaling</span></div></div>
       </div>
-
       <div class="team" onclick="this.classList.toggle('open')">
         <div class="team-hd"><div class="av">KN</div><div><h3>Ken Newton</h3><div class="role">UK Operations &amp; Contracting</div></div><span class="chev">+</span></div>
         <div class="short">Extensive experience in European operations and supplier contracting.</div>
         <div class="team-body"><p>Leads UK operations, reconfirmation, and hotel and supplier contracting. Ken brings extensive experience in European travel operations and supplier management — negotiating rates and allotments, managing supplier relationships across the continent, and running the day-to-day quality and reconfirmation process at the heart of the operation.</p>
         <div class="tags"><span class="tag">Hotel contracting</span><span class="tag">Supplier management</span><span class="tag">Reconfirmation</span><span class="tag">European operations</span><span class="tag">Quality control</span></div></div>
       </div>
-
       <div class="team" onclick="this.classList.toggle('open')">
         <div class="team-hd"><div class="av">TW</div><div><h3>Tim Windsor</h3><div class="role">UK Operations</div></div><span class="chev">+</span></div>
         <div class="short">Strong operational background across Europe and Oceania.</div>
         <div class="team-body"><p>Works alongside Ken on UK operations and reconfirmation. Tim has a strong operational background across Europe and Oceania, with deep experience in booking operations and customer service — hands-on with bookings daily and focused on getting every component confirmed and right before the guest travels.</p>
         <div class="tags"><span class="tag">Booking operations</span><span class="tag">Reconfirmation</span><span class="tag">Europe &amp; Oceania</span><span class="tag">Customer service</span></div></div>
       </div>
-
       <div class="team" onclick="this.classList.toggle('open')">
         <div class="team-hd"><div class="av">SS</div><div><h3>Suman Sethi</h3><div class="role">Operations &amp; Service Delivery · Bangalore</div></div><span class="chev">+</span></div>
         <div class="short">8+ years in DMC operations, ground handling and supplier relations.</div>
         <div class="team-body"><p>Based in Bangalore, Suman brings 8+ years in destination management and travel operations, managing supplier relations across multiple countries, guest escalations and logistics. Deeply experienced in the Nexus platform, booking operations and European delivery, he handles day-to-day system updates and service delivery — the operational backbone linking the UK desk with the group's systems.</p>
         <div class="tags"><span class="tag">Nexus platform</span><span class="tag">DMC operations</span><span class="tag">Supplier relations</span><span class="tag">Booking operations</span><span class="tag">Escalation management</span></div></div>
       </div>
-
     </div>
   </section>
 </div>
@@ -324,7 +401,6 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
       <tr><td><b>Ski &amp; specialist</b></td><td class="num">5</td><td>Ski, snow and seasonal specialists</td></tr>
       <tr><td><b>Total</b></td><td class="num">150</td><td>Suppliers secured across all service types</td></tr>
     </table>
-
     <div class="supcat"><div class="supcat-hd"><b>Ocean &amp; river cruise</b><span>24</span></div>
       <div class="suplist"><div>Ama Waterways</div><div>Ambassador Cruise Holidays</div><div>Avalon Waterways (Globus)</div><div>Azamara Club Cruises</div><div>Celestyal Cruises</div><div>Cruising Power</div><div>Crystal Cruises</div><div>Disney Cruise Line</div><div>Emerald Cruises</div><div>Explora Journeys</div><div>Fred Olsen Cruise Lines</div><div>Holland America Line</div><div>Hurtigruten UK</div><div>MSC Cruises S.A</div><div>Norwegian Cruise Line</div><div>Oceania Cruises</div><div>Ponant Cruises</div><div>Regent Seven Seas Cruises</div><div>Riverside Luxury Cruises</div><div>Seabourn</div><div>Silversea Cruises</div><div>Star Clippers</div><div>Uniworld River Cruises</div><div>Windstar Cruises</div></div></div>
     <div class="supcat"><div class="supcat-hd"><b>Tour operators &amp; DMCs</b><span>76</span></div>
@@ -373,13 +449,44 @@ td.num{color:var(--red);font-weight:700;text-align:center;width:64px;}
   Confidential — internal and trade use only.
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/europe-merc.js"></script>
 <script>
+var mapBuilt=false;
+function buildMap(){
+  if(mapBuilt||typeof jsVectorMap==='undefined')return;
+  mapBuilt=true;
+  new jsVectorMap({
+    selector:'#euromap',
+    map:'europe_merc',
+    zoomButtons:true,
+    regionStyle:{
+      initial:{fill:'#DC051E',stroke:'#ffffff',strokeWidth:0.5,fillOpacity:0.85},
+      hover:{fill:'#0f1b2d',fillOpacity:1}
+    },
+    markers:[
+      {name:'London',coords:[51.51,-0.13]},{name:'Paris',coords:[48.86,2.35]},
+      {name:'Rome',coords:[41.90,12.50]},{name:'Venice',coords:[45.44,12.33]},
+      {name:'Barcelona',coords:[41.39,2.17]},{name:'Madrid',coords:[40.42,-3.70]},
+      {name:'Amsterdam',coords:[52.37,4.90]},{name:'Vienna',coords:[48.21,16.37]},
+      {name:'Prague',coords:[50.08,14.44]},{name:'Athens',coords:[37.98,23.73]},
+      {name:'Santorini',coords:[36.39,25.46]},{name:'Dubrovnik',coords:[42.65,18.09]},
+      {name:'Lisbon',coords:[38.72,-9.14]},{name:'Edinburgh',coords:[55.95,-3.19]},
+      {name:'Reykjavik',coords:[64.15,-21.94]},{name:'Zurich',coords:[47.38,8.54]}
+    ],
+    markerStyle:{
+      initial:{fill:'#0f1b2d',stroke:'#ffffff',strokeWidth:1.5,r:5},
+      hover:{fill:'#DC051E',r:7}
+    }
+  });
+}
 function go(id, el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('on'));
   if(el) el.classList.add('on');
-  else { var i=['overview','markets','structure','functions','cruise','quality','team','suppliers','contact'].indexOf(id); if(i>-1) document.querySelectorAll('#nav button')[i].classList.add('on'); }
+  else { var i=['overview','markets','coverage','structure','functions','cruise','quality','team','suppliers','contact'].indexOf(id); if(i>-1) document.querySelectorAll('#nav button')[i].classList.add('on'); }
+  if(id==='coverage') setTimeout(buildMap,60);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
